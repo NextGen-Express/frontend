@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In</title>
+  <style>
+    
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    
+    form {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    
+    
+    label, input {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+      left: 20%;
+      transform: translateX(-50%);
+    }
+    
+    button:first-of-type {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <h1>Sign In</h1>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <button type="submit">Sign In</button>
+    <button type="button">Cancel</button>
+  </form>
+</body>
+</html>
