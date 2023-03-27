@@ -2,10 +2,11 @@ import React from "react";
 import { GoogleMap, DirectionsRenderer } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: "70%",
-  height: "500px",
-  marginLeft: "15%",
-  marginRight: "5%",
+  // width: "50%",
+  width: "1600px",
+  height: "1000px",
+  // marginLeft: "45%",
+  // marginRight: "5%",
 };
 
 const defaultCenter = {
