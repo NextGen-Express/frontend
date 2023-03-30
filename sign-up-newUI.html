@@ -1,0 +1,68 @@
+<div class="form-container">
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"], input[type="tel"], input[type="password"] {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+      button[type="submit"] {
+        display: block;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button[type="submit"]:hover {
+        background-color: #0069d9;
+      }
+      form {
+        width: 300px;
+        margin: 0 auto;
+        position: relative;
+        top: 50%;
+        transform: translateY(10%);
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+        <div class="form-group">
+      <label for="first-name">First Name:</label>
+      <input type="text" id="first-name" name="first-name" required>
+    </div>
+    <div class="form-group">
+      <label for="last-name">Last Name:</label>
+      <input type="text" id="last-name" name="last-name" required>
+    </div>
+    <div class="form-group">
+      <label for="phone-number">Phone Number:</label>
+      <input type="tel" id="phone-number" name="phone-number" required>
+    </div>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+      <button type="submit">Register</button>
+    </form>
+  </body>
+</html>
+</div>
