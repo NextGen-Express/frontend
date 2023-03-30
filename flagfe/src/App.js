@@ -34,7 +34,7 @@ function App() {
     <div className="root">
       <div className="app_header">
         <div>123</div>
-        <img src={icon} onClick={(e) => console.log(e)} />
+        <img className="user_icon" src={icon} onClick={(e) => console.log(e)} />
       </div>
 
       <div className="content">

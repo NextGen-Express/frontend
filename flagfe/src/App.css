@@ -40,12 +40,18 @@
 }
 
 .map_wrapper {
-  width: auto;
+  width: 75vw;
+  height: 90vh;
   display: flex;
-  justify-content: center;
-  align-items: center ;
-  padding-top: 5%;
-  padding-left: 5%;
+  justify-content: start;
+  align-items: start;
+  /* padding-top: 5%;
+  padding-left: 5%; */
+}
+
+.map_wrapper > div {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .form input {
