@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import icon from "./img/mencon.png";
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Map from "./component/Map";
 import { handleSearch } from "./utils";
 import { cityCoordinates, useMapSearch } from "./constants.js";
@@ -30,11 +30,42 @@ function App() {
     setSelectedCity(e.target.value);
   };
 
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
+  const handleSignOut = () => {
+    // handle sign-out logic here
+  };
+
+  useEffect(() => {
+    const handleClick = (event) => {
+      if (!event.target.matches(".user_icon")) {
+        setDropdownVisible(false);
+      }
+    };
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, []);
+
   return (
     <div className="root">
       <div className="app_header">
         <div>123</div>
-        <img src={icon} onClick={(e) => console.log(e)} />
+        <img className="user_icon" src={icon} alt="User Icon" onClick={toggleDropdown} />
+        {dropdownVisible && (
+          <div className="dropdown-menu">
+            <a href="#">Sign in</a>
+            <a href="#">Orders</a>
+            <a href="#" onClick={handleSignOut}>
+              Sign out
+            </a>
+          </div>
+        )}
       </div>
 
       <div className="content">
