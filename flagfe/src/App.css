@@ -17,6 +17,29 @@
   cursor: pointer;
 }
 
+.dropdown-menu {
+  position: absolute;
+  top: 60px;
+  right: 16px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+}
+
+.dropdown-menu a {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f2f2f2;
+}
+
 .content {
   display: flex;
   width: 100vw;
