@@ -18,12 +18,18 @@ function App() {
     setSelectedCity,
   } = useMapSearch();
 
+  const [weight, setWeight] = useState("");
+
   const handlePickupAddressChange = (e) => {
     setPickupAddress(e.target.value);
   };
 
   const handleDestinationChange = (e) => {
     setDestination(e.target.value);
+  };
+
+  const handleWeightChange = (e) => {
+    setWeight(e.target.value);
   };
 
   const handleCityChange = (e) => {
@@ -93,6 +99,14 @@ function App() {
               onChange={handleDestinationChange}
             />
             <br />
+            <label htmlFor="weight">Weight:</label>
+            <input
+              type="text"
+              id="weight"
+              value={weight}
+              onChange={handleWeightChange}
+            />
+    <br />
 
             <button
               type="button"
