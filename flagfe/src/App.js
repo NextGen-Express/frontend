@@ -19,6 +19,8 @@ function App() {
     setSelectedCity,
   } = useMapSearch();
 
+  const [weight, setWeight] = useState("");
+
   useGoogleAutocomplete("pickup-address", setPickupAddress);
   useGoogleAutocomplete("destination", setDestination);
 
