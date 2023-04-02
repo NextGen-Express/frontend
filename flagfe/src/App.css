@@ -1,8 +1,10 @@
+/* Root element */
 .root {
   display: flex;
   flex-direction: column;
 }
 
+/* App header */
 .app_header {
   display: flex;
   height: 10vh;
@@ -17,6 +19,7 @@
   cursor: pointer;
 }
 
+/* Dropdown menu */
 .dropdown-menu {
   position: absolute;
   top: 60px;
@@ -40,12 +43,14 @@
   background-color: #f2f2f2;
 }
 
+/* Content */
 .content {
   display: flex;
   width: 100vw;
   height: 40vw;
 }
 
+/* Form wrapper */
 .form_wrapper {
   width: 25vw;
   height: 90vh;
@@ -62,14 +67,13 @@
   justify-content: flex-start;
 }
 
+/* Map wrapper */
 .map_wrapper {
   width: 75vw;
   height: 90vh;
   display: flex;
   justify-content: start;
   align-items: start;
-  /* padding-top: 5%;
-  padding-left: 5%; */
 }
 
 .map_wrapper > div {
@@ -77,22 +81,18 @@
   height: 100% !important;
 }
 
-.form input {
-  height: 40px;
-  border-radius: 10px 10px 10px 10px;
-  border-width: 0;
-}
-
+/* Form elements */
+.form input,
 .form select {
   height: 40px;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 10px;
   border-width: 0;
 }
 
 .form button {
   margin-top: 20px;
   height: 40px;
-  border-radius: 20px 20px 20px 20px;
+  border-radius: 20px;
   border-width: 0;
   background-color: rgb(79, 233, 167);
   color: white;

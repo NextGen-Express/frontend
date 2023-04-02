@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Map from "./component/Map";
 import { handleSearch } from "./utils";
 import { cityCoordinates, useMapSearch } from "./constants.js";
+import useGoogleAutocomplete from "./component/useGoogleAutocomplete.js";
 
 function App() {
   const {
@@ -18,13 +19,8 @@ function App() {
     setSelectedCity,
   } = useMapSearch();
 
-  const handlePickupAddressChange = (e) => {
-    setPickupAddress(e.target.value);
-  };
-
-  const handleDestinationChange = (e) => {
-    setDestination(e.target.value);
-  };
+  useGoogleAutocomplete("pickup-address", setPickupAddress);
+  useGoogleAutocomplete("destination", setDestination);
 
   const handleCityChange = (e) => {
     setSelectedCity(e.target.value);
@@ -56,7 +52,12 @@ function App() {
     <div className="root">
       <div className="app_header">
         <div>123</div>
-        <img className="user_icon" src={icon} alt="User Icon" onClick={toggleDropdown} />
+        <img
+          className="user_icon"
+          src={icon}
+          alt="User Icon"
+          onClick={toggleDropdown}
+        />
         {dropdownVisible && (
           <div className="dropdown-menu">
             <a href="#">Sign in</a>
@@ -77,21 +78,13 @@ function App() {
               <option value="New York">New York</option>
             </select>
             <br />
+
             <label htmlFor="pickup-address">Pick-up Address:</label>
-            <input
-              type="text"
-              id="pickup-address"
-              value={pickupAddress}
-              onChange={handlePickupAddressChange}
-            />
+            <input type="text" id="pickup-address" value={pickupAddress} />
             <br />
+
             <label htmlFor="destination">Destination:</label>
-            <input
-              type="text"
-              id="destination"
-              value={destination}
-              onChange={handleDestinationChange}
-            />
+            <input type="text" id="destination" value={destination} />
             <br />
 
             <button
