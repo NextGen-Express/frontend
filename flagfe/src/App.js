@@ -22,6 +22,10 @@ function App() {
   useGoogleAutocomplete("pickup-address", setPickupAddress);
   useGoogleAutocomplete("destination", setDestination);
 
+  const handleWeightChange = (e) => {
+    setWeight(e.target.value);
+  };
+
   const handleCityChange = (e) => {
     setSelectedCity(e.target.value);
   };
@@ -86,6 +90,14 @@ function App() {
             <label htmlFor="destination">Destination:</label>
             <input type="text" id="destination" value={destination} />
             <br />
+            <label htmlFor="weight">Weight:</label>
+            <input
+              type="text"
+              id="weight"
+              value={weight}
+              onChange={handleWeightChange}
+            />
+    <br />
 
             <button
               type="button"
