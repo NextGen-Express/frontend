@@ -13,8 +13,12 @@
   justify-content: space-between;
 }
 
+.app_header_left {
+  flex-grow: 1;
+}
+
 .app_header img {
-  margin-right: 20px;
+  margin-right: 0px;
   height: 100%;
   cursor: pointer;
 }
