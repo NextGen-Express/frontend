@@ -57,7 +57,7 @@ function App() {
   return (
     <div className="root">
       <div className="app_header">
-        <div>123</div>
+        <div className="app_header_left">123</div>
         <img
           className="user_icon"
           src={icon}
@@ -92,6 +92,7 @@ function App() {
             <label htmlFor="destination">Destination:</label>
             <input type="text" id="destination" value={destination} />
             <br />
+
             <label htmlFor="weight">Weight:</label>
             <input
               type="text"
@@ -99,7 +100,7 @@ function App() {
               value={weight}
               onChange={handleWeightChange}
             />
-    <br />
+            <br />
 
             <button
               type="button"
