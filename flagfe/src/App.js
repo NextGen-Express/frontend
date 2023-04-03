@@ -13,6 +13,7 @@ import Homepage from "./component/Homepage";
 import Login from "./component/Login";
 import Signup from "./component/Signup";
 import History from "./component/History";
+import CarrierSelection from "./component/carrierselectionpage/CarrierSelection";
 
 function App() {
   
@@ -24,6 +25,7 @@ function App() {
       <Route exact path="/Login" element={<Login/>}/>
       <Route exact path="/Signup" element={<Signup/>}/>
       <Route exact path="/History" element={<History/>}/>
+      <Route exact path="/carrier-selection" element={<CarrierSelection />} />
     </Routes>
     </BrowserRouter>
     </>
