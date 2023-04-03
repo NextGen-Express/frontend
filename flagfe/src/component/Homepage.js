@@ -3,9 +3,9 @@ import "./Homepage.css";
 import React, { useState, useEffect } from "react";
 import Map from "./Map";
 import { handleSearch } from "../utils";
-import { cityCoordinates, useMapSearch } from "../constants.js";
+import { cityCoordinates, useMapSearch } from "../../src/constants.js";
 import useGoogleAutocomplete from "./useGoogleAutocomplete.js";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function Homepage() {
   const {
@@ -43,6 +43,11 @@ function Homepage() {
   };
   const navigate = useNavigate();
 
+  const onSearchClick = () => {
+    handleSearch(pickupAddress, destination, setDirections);
+    navigate("/carrier-selection", { state: { directions } });
+  };
+
   useEffect(() => {
     const handleClick = (event) => {
       if (!event.target.matches(".user_icon")) {
@@ -67,8 +72,8 @@ function Homepage() {
         />
         {dropdownVisible && (
           <div className="dropdown-menu">
-            <a onClick={()=>navigate("/History")}>Orders</a>
-            <a onClick={()=>navigate("/Login")}>Signout</a>
+            <a onClick={() => navigate("/History")}>Orders</a>
+            <a onClick={() => navigate("/Login")}>Signout</a>
           </div>
         )}
       </div>
@@ -100,12 +105,7 @@ function Homepage() {
             />
             <br />
 
-            <button
-              type="button"
-              onClick={() =>
-                handleSearch(pickupAddress, destination, setDirections)
-              }
-            >
+            <button type="button" onClick={onSearchClick}>
               Search
             </button>
           </form>
