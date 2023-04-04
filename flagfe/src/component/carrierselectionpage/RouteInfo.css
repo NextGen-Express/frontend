@@ -7,15 +7,15 @@
     padding: 20px;
     box-sizing: border-box;
   }
-  
-  .route-info-header {
+
+ .route-info-header {
     display: flex;
     height: 10vh;
     background-color: rgb(79, 233, 167);
     align-items: center;
     justify-content: flex-end;
   }
-  
+
   .route-info-header img {
     margin-right: 20px;
     height: 100%;

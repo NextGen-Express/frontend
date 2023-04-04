@@ -1,31 +1,58 @@
 import React, { useState } from "react";
-import "./RouteInfo.css"; // Don't forget to import the CSS file
+import "./RouteInfo.css";
+import icon from "../../img/mencon.png";
+import { useNavigate } from "react-router-dom";
 
-const RouteInfo = ({ directions, onBookButtonClick }) => {
+
+const RouteInfo = ({ directions }) => {
   const [carrierType, setCarrierType] = useState("Robot Car");
+
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   const handleCarrierTypeChange = (e) => {
     setCarrierType(e.target.value);
   };
 
+  const navigate = useNavigate();
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
   // Extract route information from the directions object if available
-  var routeInfo = directions && directions.routes[0] && directions.routes[0].legs[0];
+  const routeInfo =
+    directions && directions.routes[0] && directions.routes[0].legs[0];
 
   return (
-    <div className="route-info">
-      <div className="route-info-header">
-        {/* Add your user icon here */}
+    <div className="root">
+      <div className="app_header">
+        <div className="app_header_left">123</div>
+        <img
+          className="user_icon"
+          src={icon}
+          alt="User Icon"
+          onClick={toggleDropdown}
+        />
+        {dropdownVisible && (
+          <div className="dropdown-menu">
+            <a onClick={() => navigate("/History")}>Orders</a>
+            <a onClick={() => navigate("/Login")}>Signout</a>
+          </div>
+        )}
       </div>
+      
       <div className="order-info-block">
         <div className="route-info-section">
           <h3>Route Information</h3>
           {routeInfo ? (
             <>
               <p>
-                Distance: {routeInfo.distance.text} ({routeInfo.distance.value} meters)
+                Distance: {routeInfo.distance.text} ({routeInfo.distance.value}{" "}
+                meters)
               </p>
               <p>
-                Duration: {routeInfo.duration.text} ({routeInfo.duration.value} seconds)
+                Duration: {routeInfo.duration.text} ({routeInfo.duration.value}{" "}
+                seconds)
               </p>
             </>
           ) : (
@@ -44,13 +71,8 @@ const RouteInfo = ({ directions, onBookButtonClick }) => {
           </select>
         </div>
         <div className="book-section">
-          <button className="book-button" onClick={onBookButtonClick}>
-            Book
-          </button>
+          <button className="book-button">Book</button>
         </div>
-      </div>
-      <div className="map_wrapper">
-        {/* Add the Map component here */}
       </div>
     </div>
   );
