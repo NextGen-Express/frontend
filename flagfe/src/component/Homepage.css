@@ -14,10 +14,10 @@
 }
 
 .app_header_left {
-  font-size: 3em;
+  font-size: 4em;
   font-weight: bold;
-  font-family: "Sans-serif";
-  color:rgb(247, 246, 172);
+  font-family: "Copperplate";
+  color: rgb(247, 246, 172);
   flex-grow: 1;
 }
 
@@ -88,6 +88,22 @@
 .map_wrapper > div {
   width: 100% !important;
   height: 100% !important;
+}
+
+/*Label position */
+label[for="pickup-address"] {
+  position: relative;
+  left: -17px;
+}
+
+label[for="destination"] {
+  position: relative;
+  left: -17px;
+}
+
+label[for="weight"] {
+  position: relative;
+  left: -17px;
 }
 
 /* Form elements */
