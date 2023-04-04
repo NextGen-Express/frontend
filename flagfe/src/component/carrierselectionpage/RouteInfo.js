@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./RouteInfo.css";
+import Map from "./../Map";
 import icon from "../../img/mencon.png";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +27,7 @@ const RouteInfo = ({ directions }) => {
   return (
     <div className="root">
       <div className="app_header">
-        <div className="app_header_left">123</div>
+        <div className="app_header_left">LaiEx</div>
         <img
           className="user_icon"
           src={icon}
@@ -41,37 +42,47 @@ const RouteInfo = ({ directions }) => {
         )}
       </div>
       
-      <div className="order-info-block">
-        <div className="route-info-section">
-          <h3>Route Information</h3>
-          {routeInfo ? (
-            <>
-              <p>
-                Distance: {routeInfo.distance.text} ({routeInfo.distance.value}{" "}
-                meters)
-              </p>
-              <p>
-                Duration: {routeInfo.duration.text} ({routeInfo.duration.value}{" "}
-                seconds)
-              </p>
-            </>
-          ) : (
-            <p>No route information available</p>
-          )}
+
+      <div className="content">
+        <div className="form_wrapper">
+          <form className="form">
+            <div className="order-info-block">
+              <div className="route-info-section">
+                <h3>Route Information</h3>
+                {routeInfo ? (
+                  <>
+                    <p>
+                      Distance: {routeInfo.distance.text} ({routeInfo.distance.value}{" "}
+                      meters)
+                    </p>
+                    <p>
+                      Duration: {routeInfo.duration.text} ({routeInfo.duration.value}{" "}
+                      seconds)
+                    </p>
+                  </>
+                ) : (
+                  <p>No route information available</p>
+                )}
+              </div>
+              <div className="carrier-type-section">
+                <h3>Select Carrier</h3>
+                <select
+                  className="carrier-type-dropdown"
+                  value={carrierType}
+                  onChange={handleCarrierTypeChange}
+                >
+                  <option value="Robot Car">Robot Car</option>
+                  <option value="UAV">UAV</option>
+                </select>
+              </div>
+              <div className="book-section">
+                <button className="book-button">Book</button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div className="carrier-type-section">
-          <h3>Select Carrier</h3>
-          <select
-            className="carrier-type-dropdown"
-            value={carrierType}
-            onChange={handleCarrierTypeChange}
-          >
-            <option value="Robot Car">Robot Car</option>
-            <option value="UAV">UAV</option>
-          </select>
-        </div>
-        <div className="book-section">
-          <button className="book-button">Book</button>
+        <div className="map_wrapper">
+          <Map center={{ lat: 37.7749, lng: -122.4194 }} zoom={10} />
         </div>
       </div>
     </div>

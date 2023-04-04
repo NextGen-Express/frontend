@@ -1,3 +1,4 @@
+
 .route-info {
     display: flex;
     flex-direction: column;
@@ -8,54 +9,100 @@
     box-sizing: border-box;
   }
 
- .route-info-header {
-    display: flex;
-    height: 10vh;
-    background-color: rgb(79, 233, 167);
-    align-items: center;
-    justify-content: flex-end;
-  }
+/* Map wrapper */
+.map_wrapper {
+  width: 75vw;
+  height: 90vh;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
 
-  .route-info-header img {
-    margin-right: 20px;
-    height: 100%;
-    cursor: pointer;
-  }
+.map_wrapper > div {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Content */
+.content {
+  font-size: 1.0em;
+  display: flex;
+  width: 100vw;
+  height: 40vw;
+}
+
+.map_wrapper > div {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Form elements */
+.form input,
+.form select {
+  height: 40px;
+  border-radius: 10px;
+  border-width: 0;
+}
+
+.form button {
+  margin-top: 20px;
+  height: 55px;
+  border-radius: 20px;
+  border-width: 0;
+  background-color: rgb(79, 233, 167);
+  color: white;
+  font-size: large;
+  cursor: pointer;
+}
+
+.route-info-header {
+  display: flex;
+  height: 10vh;
+  background-color: rgb(79, 233, 167);
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.route-info-header img {
+  margin-right: 20px;
+  height: 100%;
+  cursor: pointer;
+}
   
-  .order-info-block {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 80vh;
-    padding: 20px;
-  }
+.order-info-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 80vh;
+  padding: 20px;
+}
   
-  .route-info-section,
-  .carrier-type-section,
-  .book-section {
-    display: flex;
-    flex-direction: column;
-  }
+.route-info-section,
+.carrier-type-section,
+.book-section {
+  display: flex;
+  flex-direction: column;
+}
   
-  .route-info-section h3,
-  .carrier-type-section h3 {
-    margin-bottom: 10px;
-  }
+.route-info-section h3,
+.carrier-type-section h3 {
+  margin-bottom: 10px;
+}
   
-  .carrier-type-dropdown {
-    height: 40px;
-    border-radius: 10px 10px 10px 10px;
-    border-width: 0;
-  }
+.carrier-type-dropdown {
+  height: 40px;
+  border-radius: 10px 10px 10px 10px;
+  border-width: 0;
+}
   
-  .book-button {
-    margin-top: 20px;
-    height: 40px;
-    border-radius: 20px 20px 20px 20px;
-    border-width: 0;
-    background-color: rgb(79, 233, 167);
-    color: white;
-    font-size: large;
-    cursor: pointer;
-  }
+.book-button {
+  margin-top: 20px;
+  height: 40px;
+  border-radius: 20px 20px 20px 20px;
+  border-width: 0;
+  background-color: rgb(79, 233, 167);
+  color: white;
+  font-size: large;
+  cursor: pointer;
+}
   
