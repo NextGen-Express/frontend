@@ -14,6 +14,10 @@
 }
 
 .app_header_left {
+  font-size: 3em;
+  font-weight: bold;
+  font-family: "Sans-serif";
+  color:rgb(247, 246, 172);
   flex-grow: 1;
 }
 
@@ -49,6 +53,7 @@
 
 /* Content */
 .content {
+  font-size: 1.6em;
   display: flex;
   width: 100vw;
   height: 40vw;
@@ -95,7 +100,7 @@
 
 .form button {
   margin-top: 20px;
-  height: 40px;
+  height: 55px;
   border-radius: 20px;
   border-width: 0;
   background-color: rgb(79, 233, 167);
