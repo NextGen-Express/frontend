@@ -5,6 +5,9 @@ import Map from "../Map";
 import { cityCoordinates, useMapSearch } from "../../constants.js";
 
 const CarrierSelection = () => {
+  const { state } = useLocation();
+  console.log(state);
+
   const location = useLocation();
   const directions = location.state && location.state.directions;
   const [center, setCenter] = useState(cityCoordinates["San Francisco"]);
