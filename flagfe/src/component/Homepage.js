@@ -43,9 +43,50 @@ function Homepage() {
   };
   const navigate = useNavigate();
 
-  const onSearchClick = () => {
-    handleSearch(pickupAddress, destination, setDirections);
-    navigate("/carrier-selection", { state: { directions } });
+  // const onSearchClick = () => {
+  //   handleSearch(pickupAddress, destination, setDirections);
+  //   navigate("/carrier-selection", { state: { directions } });
+  // };
+  const onSearchClick = async () => {
+    try {
+      const response = await fetch('/home/search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          pickupAddress,
+          destination,
+          weight,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('Something went wrong');
+      } else {
+
+      }
+      const data = await response.json();
+      // setDirections(data.directions);
+      navigate("/carrier-selection", { state: { data } });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const [jsonData, setJsonData] = useState(null);
+
+  const onHistoryClick = async () => {
+    try {
+      const response = await fetch('/home/history');
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+      const data = await response.json();
+      setJsonData(data);
+      navigate("/History", { state: { jsonData } });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -72,7 +113,7 @@ function Homepage() {
         />
         {dropdownVisible && (
           <div className="dropdown-menu">
-            <a onClick={() => navigate("/History")}>Orders</a>
+            <a onClick={onHistoryClick}>Orders</a>
             <a onClick={() => navigate("/Login")}>Signout</a>
           </div>
         )}
