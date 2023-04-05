@@ -1,47 +1,98 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from 'react-router-dom';
 import './Signup.css';
+//import { API_BASE_URL } from '../config.js';
 
 function Signup() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [phone_number, setPhoneNumber] = useState('');
+  const [error, setError] = useState(null);
+  //const [email, setEmail] = useState('');
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
 
+  const handleFirstNameChange = (event) => {
+    setFirstName(event.target.value);
+  }
+
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value);
+  }
+
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+  const handlePhoneNumberChange = (event) => {
+    setPhoneNumber(event.target.value);
+  }
 
-  const handleSubmit = (event) => {
+  // const handleEmailChange = (event) => {
+  //   setEmail(event.target.value);
+  // };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(`Username: ${username}, Password: ${password}, Email: ${email}`);
-  };
+    if (!username || !first_name || !last_name || !password || !phone_number) {
+      console.error('All Input Fields Are Required');
+      setError('Please fill in all fields.'); 
+      return; 
+    }
+    const userData = { username, first_name, last_name, password, phone_number };
+    try {
+      const response = await fetch(`/register`, {
+        //mode: 'no-cors',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not OK');
+      }
+      navigate('/login');
+    } catch (error) {
+      console.error('Error signing up:', error);
+    }
+};
+
 
   return (
     <div className="signup">
       <h1>Signup</h1>
+      {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>
           Username:
           <input type="text" value={username} onChange={handleUsernameChange} />
         </label>
         <label>
+          First Name:
+          <input type="text" value={first_name} onChange={handleFirstNameChange} />
+        </label>
+        <label>
+          Last Name:
+          <input type="text" value={last_name} onChange={handleLastNameChange} />
+        </label>
+        <label>
           Password:
           <input type="password" value={password} onChange={handlePasswordChange} />
         </label>
         <label>
+          Phone Number:
+          <input type="phone" value={phone_number} onChange={handlePhoneNumberChange} />
+        </label>
+        {/* <label>
           Email:
           <input type="email" value={email} onChange={handleEmailChange} />
-        </label>
+        </label> */}
         <button type="submit">Sign Up</button>
       </form>
       <p>Already have an account? <Link to="/login">Login</Link></p>
