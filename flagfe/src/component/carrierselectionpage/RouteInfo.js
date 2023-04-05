@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import "./RouteInfo.css";
 import Map from "./../Map";
 import icon from "../../img/mencon.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 
 const RouteInfo = ({ directions }) => {
+  // const location = useLocation();
+  // const data = location.state?.data;
+  // console.log(data);
+
+
   const [carrierType, setCarrierType] = useState("Robot Car");
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -20,8 +25,7 @@ const RouteInfo = ({ directions }) => {
   };
 
   // Extract route information from the directions object if available
-  const routeInfo =
-    directions && directions.routes[0] && directions.routes[0].legs[0];
+  const routeInfo = directions && directions.routes[0] && directions.routes[0].legs[0];
 
   return (
     <div className="root">
