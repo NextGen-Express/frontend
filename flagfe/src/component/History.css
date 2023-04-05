@@ -1,52 +1,57 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f2f2f2;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    color: #4caf50;
-    text-shadow: 2px 2px 5px #d2d2d2;
-  }
-  
-  p {
-    font-size: 1.5rem;
-    margin: 1rem;
-    text-align: center;
-  }
-  
-  .price {
-    font-size: 2rem;
-  }
-  
-  #final-price {
-    font-weight: bold;
-  }
-  
-  button {
-    padding: 1rem 2rem;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    margin-top: 2rem;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #4caf50;
+  text-shadow: 2px 2px 5px #d2d2d2;
+}
+
+p {
+  font-size: 1.5rem;
+  margin: 1rem;
+  text-align: center;
+}
+
+.price {
+  font-size: 2rem;
+}
+
+#final-price {
+  font-weight: bold;
+}
+.final-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+button {
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  margin-top: 2rem;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  align-items: center;
+}
+
+button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+button:focus {
+  outline: none;
+}
