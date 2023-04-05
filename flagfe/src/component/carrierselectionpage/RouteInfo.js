@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import "./RouteInfo.css";
 import Map from "./../Map";
 import icon from "../../img/mencon.png";
-import { useNavigate, useLocation} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const RouteInfo = ({ directions }) => {
   // const location = useLocation();
   // const data = location.state?.data;
   // console.log(data);
-
 
   const [carrierType, setCarrierType] = useState("Robot Car");
 
@@ -25,7 +24,8 @@ const RouteInfo = ({ directions }) => {
   };
 
   // Extract route information from the directions object if available
-  const routeInfo = directions && directions.routes[0] && directions.routes[0].legs[0];
+  const routeInfo =
+    directions && directions.routes[0] && directions.routes[0].legs[0];
 
   return (
     <div className="root">
@@ -54,12 +54,12 @@ const RouteInfo = ({ directions }) => {
                 {routeInfo && (
                   <>
                     <p>
-                      Distance: {routeInfo.distance.text} ({routeInfo.distance.value}{" "}
-                      meters)
+                      Distance: {routeInfo.distance.text} (
+                      {routeInfo.distance.value} meters)
                     </p>
                     <p>
-                      Duration: {routeInfo.duration.text} ({routeInfo.duration.value}{" "}
-                      seconds)
+                      Duration: {routeInfo.duration.text} (
+                      {routeInfo.duration.value} seconds)
                     </p>
                   </>
                 )}
@@ -108,7 +108,5 @@ const RouteInfo = ({ directions }) => {
     </div>
   );
 };
-
-
 
 export default RouteInfo;
