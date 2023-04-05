@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 function Homepage() {
   const {
-    pickupAddress,
+    origin,
     setPickupAddress,
     destination,
     setDestination,
@@ -50,12 +50,12 @@ function Homepage() {
   const onSearchClick = async () => {
     try {
       const response = await fetch('/home/search', {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          pickupAddress,
+          origin,
           destination,
           weight,
         }),
@@ -64,10 +64,10 @@ function Homepage() {
         throw new Error('Something went wrong');
       } else {
 
-      }
       const data = await response.json();
       // setDirections(data.directions);
       navigate("/carrier-selection", { state: { data } });
+    }
     } catch (error) {
       console.error(error);
     }
@@ -80,10 +80,11 @@ function Homepage() {
       const response = await fetch('/home/history');
       if (!response.ok) {
         throw new Error('Failed to fetch data');
-      }
+      }else{
       const data = await response.json();
       setJsonData(data);
       navigate("/History", { state: { jsonData } });
+      }
     } catch (error) {
       console.error(error);
     }
@@ -133,7 +134,7 @@ function Homepage() {
             <input
               type="text"
               id="pickup-address"
-              value={pickupAddress}
+              value={origin}
               style={{ border: "1px solid rgb(79, 233, 167)" }}
             />
             <br />
