@@ -61,6 +61,7 @@
 
 /* Form wrapper */
 .form_wrapper {
+  font-size: 1.7em;
   width: 25vw;
   height: 90vh;
   background-color: rgb(230, 230, 230);
@@ -93,18 +94,22 @@
 /*Label position */
 label[for="pickup-address"] {
   position: relative;
+  top: 30px;
   left: -17px;
 }
 
 label[for="destination"] {
   position: relative;
+  top: 30px;
   left: -17px;
 }
 
 label[for="weight"] {
   position: relative;
+  top: 30px;
   left: -17px;
 }
+
 
 /* Form elements */
 .form input,

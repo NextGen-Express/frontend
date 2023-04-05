@@ -89,11 +89,21 @@ function Homepage() {
             <br />
 
             <label htmlFor="pickup-address">Pick-up Address:</label>
-            <input type="text" id="pickup-address" value={pickupAddress} />
+            <input
+              type="text"
+              id="pickup-address"
+              value={pickupAddress}
+              style={{ border: "1px solid rgb(79, 233, 167)" }}
+            />
             <br />
 
             <label htmlFor="destination">Destination:</label>
-            <input type="text" id="destination" value={destination} />
+            <input
+              type="text"
+              id="destination"
+              value={destination}
+              style={{ border: "1px solid rgb(79, 233, 167)" }}
+            />
             <br />
 
             <label htmlFor="weight">Weight:</label>
@@ -101,6 +111,8 @@ function Homepage() {
               type="text"
               id="weight"
               value={weight}
+              placeholder="Enter weight in lbs"
+              style={{ border: "1px solid rgb(79, 233, 167)" }}
               onChange={handleWeightChange}
             />
             <br />
