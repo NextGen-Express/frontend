@@ -3,9 +3,9 @@ import "./Homepage.css";
 import React, { useState, useEffect } from "react";
 import Map from "./Map";
 import { handleSearch } from "../utils";
-import { cityCoordinates, useMapSearch } from "../../src/constants.js";
+import { cityCoordinates, useMapSearch, globleSearch } from "../../src/constants.js";
 import useGoogleAutocomplete from "./useGoogleAutocomplete.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 function Homepage() {
   const {
@@ -43,35 +43,36 @@ function Homepage() {
   };
   const navigate = useNavigate();
 
-  // const onSearchClick = () => {
-  //   handleSearch(pickupAddress, destination, setDirections);
-  //   navigate("/carrier-selection", { state: { directions } });
-  // };
-  const onSearchClick = async () => {
-    try {
-      const response = await fetch('/home/search', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          origin,
-          destination,
-          weight,
-        }),
-      });
-      if (!response.ok) {
-        throw new Error('Something went wrong');
-      } else {
+    const onSearchClick = async () => {
+      console.log(origin);
+      console.log(destination);
+      console.log(weight);
 
-      const data = await response.json();
-      // setDirections(data.directions);
-      navigate("/carrier-selection", { state: { data } });
-    }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+      try {
+        const response = await fetch('/home/search', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            origin,
+            destination,
+            weight,
+          }),
+        });
+        if (!response.ok) {
+          throw new Error('Something went wrong');
+        } else {
+  
+        const data = await response.json();
+        // setDirections(data.directions);
+        navigate("/carrier-selection", { state: { data } });
+      }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
 
   const [jsonData, setJsonData] = useState(null);
 

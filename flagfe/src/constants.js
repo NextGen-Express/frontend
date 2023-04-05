@@ -7,13 +7,13 @@ export const cityCoordinates = {
 };
 
 export function useMapSearch() {
-  const [pickupAddress, setPickupAddress] = useState("");
+  const [origin, setPickupAddress] = useState("");
   const [destination, setDestination] = useState("");
   const [directions, setDirections] = useState(null);
   const [selectedCity, setSelectedCity] = useState("San Francisco");
 
   return {
-    pickupAddress,
+    origin,
     setPickupAddress,
     destination,
     setDestination,
