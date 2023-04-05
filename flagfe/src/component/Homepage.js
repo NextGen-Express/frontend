@@ -10,6 +10,7 @@ import {
 } from "../../src/constants.js";
 import useGoogleAutocomplete from "./useGoogleAutocomplete.js";
 import { useNavigate } from "react-router-dom";
+import Logout from "./Logout";
 
 function Homepage() {
   const {
@@ -42,10 +43,17 @@ function Homepage() {
     setDropdownVisible(!dropdownVisible);
   };
 
-  const handleSignOut = () => {
-    // handle sign-out logic here
-  };
   const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    try {
+      await Logout();
+      console.log("Sign out successful");
+      navigate("/login");
+    } catch (error) {
+      console.error("Sign out failed:", error);
+    }
+  };
 
   const onSearchClick = async () => {
     console.log(origin);
@@ -119,7 +127,7 @@ function Homepage() {
         {dropdownVisible && (
           <div className="dropdown-menu">
             <a onClick={onHistoryClick}>Orders</a>
-            <a onClick={() => navigate("/Login")}>Signout</a>
+            <a onClick={handleSignOut}>Signout</a>
           </div>
         )}
       </div>
