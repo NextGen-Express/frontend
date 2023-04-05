@@ -44,24 +44,38 @@ function Signup() {
       setError('Please fill in all fields.'); 
       return; 
     }
+  
     const userData = { username, first_name, last_name, password, phone_number };
     try {
       const response = await fetch(`/register`, {
-        //mode: 'no-cors',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(userData),
       });
-      if (!response.ok) {
+    
+      if (response.status === 201) {
+        navigate('/login');
+      } else if (response.status === 409) {
+        const contentType = response.headers.get('Content-Type');
+        if (contentType && contentType.indexOf('application/json') !== -1) {
+          const data = await response.json();
+          setError(data.message);
+        } else {
+          const errorText = await response.text();
+          setError(errorText);
+        }
+      } else {
         throw new Error('Network response was not OK');
       }
-      navigate('/login');
     } catch (error) {
       console.error('Error signing up:', error);
     }
-};
+    
+  };
+  
+  
 
 
   return (
