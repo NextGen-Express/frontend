@@ -22,31 +22,24 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Create a new FormData object
+        
         const formData = new FormData();
         formData.append('username', username);
         formData.append('password', password);
 
-        // Send formData to backend for validation
         fetch('/login', {
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            // Handle response from backend
+        .then(response => {  
             if (response.ok) {
-                // Redirect to home page or perform other actions
                 navigate('/');
             } else {
-                // Handle unsuccessful login
-                // Show error message to user
                 setError('Invalid username or password');
             }
         })
         .catch(error => {
-            // Handle error
             console.error('Error during login', error);
-            // Show error message to user
             setError('An error occurred during login');
         });
     };
