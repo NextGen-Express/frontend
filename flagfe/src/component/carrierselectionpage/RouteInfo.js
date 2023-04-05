@@ -4,7 +4,6 @@ import Map from "./../Map";
 import icon from "../../img/mencon.png";
 import { useNavigate } from "react-router-dom";
 
-
 const RouteInfo = ({ directions }) => {
   const [carrierType, setCarrierType] = useState("Robot Car");
 
@@ -41,7 +40,6 @@ const RouteInfo = ({ directions }) => {
           </div>
         )}
       </div>
-      
 
       <div className="content">
         <div className="form_wrapper">
@@ -49,7 +47,7 @@ const RouteInfo = ({ directions }) => {
             <div className="order-info-block">
               <div className="route-info-section">
                 <h3>Route Information</h3>
-                {routeInfo ? (
+                {routeInfo && (
                   <>
                     <p>
                       Distance: {routeInfo.distance.text} ({routeInfo.distance.value}{" "}
@@ -60,9 +58,27 @@ const RouteInfo = ({ directions }) => {
                       seconds)
                     </p>
                   </>
-                ) : (
-                  <p>No route information available</p>
                 )}
+                <div className="info-blocks">
+                  <div className="info-block">
+                    <h4>Estimated_Pickup_Time:</h4>
+                    <div className="number-display">
+                      <span>00:00</span>
+                    </div>
+                  </div>
+                  <div className="info-block">
+                    <h4>Estimated_Delivery_Time:</h4>
+                    <div className="number-display">
+                      <span>00:00</span>
+                    </div>
+                  </div>
+                  <div className="info-block">
+                    <h4>Price:</h4>
+                    <div className="number-display">
+                      <span>0.00</span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="carrier-type-section">
                 <h3>Select Carrier</h3>
@@ -88,5 +104,7 @@ const RouteInfo = ({ directions }) => {
     </div>
   );
 };
+
+
 
 export default RouteInfo;
