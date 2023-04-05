@@ -2,6 +2,7 @@
   "name": "flagfe",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@ant-design/colors": "^7.0.0",
     "@react-google-maps/api": "^2.18.1",
