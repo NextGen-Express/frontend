@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import './History.css';
+import "./History.css";
 
 function History({ path }) {
   const [data, setData] = useState([]);
@@ -14,27 +14,39 @@ function History({ path }) {
       .catch((error) => console.error(error));
   }, [path]);
 
+  data.map((order) => setFinalPrice(order["price"]));
+
   const handleBackClick = () => {
     navigate("/");
   };
 
   return (
-    <div className="container" style={{ maxHeight: "500px", overflowY: "scroll" }}>
-      <h1>Order Information</h1>
-      {data.map((order) => (
-        <div key={order.id}>
-          {Object.keys(order).map((key) => (
-            <p id={key} key={key}>
-              {order[key]}
-            </p>
-          ))}
-        </div>
-      ))}
-      <h1 className="price">Final Price:</h1>
-      <p id="final-price">{finalPrice}</p>
-      <button id="back-btn" onClick={handleBackClick}>
-        Back
-      </button>
+    <div className="root">
+      <div
+        className="container"
+        style={{ maxHeight: "500px", overflowY: "scroll" }}
+      >
+        <h1>Order Information</h1>
+        {data.map((order) => (
+          <div key={order.id}>
+            {Object.keys(order)
+              .filter((key) => key !== "price")
+              .map((key) => (
+                <p id={key} key={key}>
+                  {order[key]}
+                </p>
+              ))}
+          </div>
+        ))}
+      </div>
+
+      <div className="final-price">
+        <h1 className="price">Final Price:</h1>
+        <p id="final-price">{finalPrice}</p>
+        <button id="back-btn" onClick={handleBackClick}>
+          Back
+        </button>
+      </div>
     </div>
   );
 }
