@@ -17,9 +17,9 @@ const CarrierSelection = () => {
   const navigate = useNavigate();
   //check for local flag
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (isLoggedIn !== 'true') {
-      navigate('/login');
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn !== "true") {
+      navigate("/login");
     }
   }, []);
 
@@ -37,7 +37,7 @@ const CarrierSelection = () => {
     <div className="content">
       <div className="route-info-wrapper">
         // For data loading of json -- TEST PURPOSE
-        <RouteInfo data={state.data} directions={directions} />
+        <RouteInfo data={state && state.data} directions={directions} />
       </div>
       <div className="map_wrapper">
         <Map center={center} />

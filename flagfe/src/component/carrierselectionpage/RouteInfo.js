@@ -20,6 +20,7 @@ const RouteInfo = ({ directions, data }) => {
   };
 
   useEffect(() => {
+    if (!data) return;
     if (carrierType === "Robot Car" && data.groundPlan) {
       const pickTime = new Date(data.groundPlan.estimatedPickTime);
       const deliveryTime = new Date(data.groundPlan.estimatedDeliveryTime);
@@ -61,14 +62,15 @@ const RouteInfo = ({ directions, data }) => {
     directions && directions.routes[0] && directions.routes[0].legs[0];
 
   // New function to handle the "Book" button click
-  const onBookClick = async () => {
+  const onBookClick = async (e) => {
+    e.preventDefault();
     const selectedPlan = carrierType === "Robot Car" ? data.groundPlan : data.uavPlan;
-    const routeInfo = selectedPlan.route.legs[0];
+    // const routeInfo = selectedPlan.route.legs[0];
     const payload = {
       estimated_pick_time: selectedPlan.estimatedPickTime,
       estimated_delivery_time: selectedPlan.estimatedDeliveryTime,
-      pickup_addr: routeInfo.startAddress,
-      delivery_addr: routeInfo.endAddress,
+      pickup_addr: carrierType === "Robot Car" ? selectedPlan.route.legs[0].startAddress : selectedPlan.origin,
+      delivery_addr: carrierType === "Robot Car" ? selectedPlan.route.legs[0].endAddress : selectedPlan.destionation,
       carrier_id: selectedPlan.carrierId,
       price: selectedPlan.price.toFixed(2),
     };
@@ -162,7 +164,7 @@ const RouteInfo = ({ directions, data }) => {
               </div>
               <div className="book-section">
                 {/* Updated the onClick event */}
-                <button className="book-button" onClick={onBookClick}>Book</button>
+                <button className="book-button" onClick={(e) => onBookClick(e)}>Book</button>
               </div>
             </div>
           </form>
