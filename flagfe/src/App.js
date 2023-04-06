@@ -16,6 +16,18 @@ import History from "./component/History";
 import CarrierSelection from "./component/carrierselectionpage/CarrierSelection";
 import Logout from "./component/Logout";
 
+// function PrivateRoute({ element, ...rest }) {
+//   const isLoggedIn = localStorage.getItem("isLoggedIn");
+//   const navigate = useNavigate();
+
+//   if (!isLoggedIn) {
+//     navigate("/Login");
+//     return null;
+//   }
+
+//   return <Route {...rest} element={element} />;
+// }
+
 function App() {
   return (
     <>
