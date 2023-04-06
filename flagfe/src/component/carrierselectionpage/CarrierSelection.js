@@ -6,9 +6,6 @@ import RouteInfo from "./RouteInfo";
 import Map from "../Map";
 import { cityCoordinates, useMapSearch } from "../../constants.js";
 
-// For data loading of json -- TEST PURPOSE
-import response from "./response.json";
-
 const CarrierSelection = () => {
   const { state } = useLocation();
   console.log(state);
