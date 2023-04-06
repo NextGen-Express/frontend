@@ -107,27 +107,27 @@ const Signup = () => {
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>
-          Username:
+          Username:*
           <input type="text" value={username} onChange={handleUsernameChange} />
           {fieldErrors.username && <div className="error">{fieldErrors.username}</div>}
         </label>
         <label>
-          First Name:
+          First Name:*
           <input type="text" value={first_name} onChange={handleFirstNameChange} />
           {fieldErrors.first_name && <div className="error">{fieldErrors.first_name}</div>}
         </label>
         <label>
-          Last Name:
+          Last Name:*
           <input type="text" value={last_name} onChange={handleLastNameChange} />
           {fieldErrors.last_name && <div className="error">{fieldErrors.last_name}</div>}
         </label>
         <label>
-          Password:
+          Password:*
           <input type="password" value={password} onChange={handlePasswordChange} />
           {fieldErrors.password && <div className="error">{fieldErrors.password}</div>}
         </label>
         <label>
-          Phone Number:
+          Phone Number:*
           <input type="phone" value={phone_number} onChange={handlePhoneNumberChange} />
           {fieldErrors.phone_number && <div className="error">{fieldErrors.phone_number}</div>}
         </label>
