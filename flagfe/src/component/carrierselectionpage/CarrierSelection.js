@@ -1,7 +1,7 @@
 // For data loading of json -- TEST PURPOSE
 
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import RouteInfo from "./RouteInfo";
 import Map from "../Map";
 import { cityCoordinates, useMapSearch } from "../../constants.js";
@@ -10,9 +10,21 @@ import { cityCoordinates, useMapSearch } from "../../constants.js";
 import response from "./response.json";
 
 const CarrierSelection = () => {
+  const { state } = useLocation();
+  console.log(state);
+
   const location = useLocation();
   const directions = location.state && location.state.directions;
   const [center, setCenter] = useState(cityCoordinates["San Francisco"]);
+
+  const navigate = useNavigate();
+  //check for local flag
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn !== 'true') {
+      navigate('/login');
+    }
+  }, []);
 
   useEffect(() => {
     if (directions) {

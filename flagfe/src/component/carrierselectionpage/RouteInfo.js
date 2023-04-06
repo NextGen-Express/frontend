@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./RouteInfo.css";
 import Map from "./../Map";
 import icon from "../../img/mencon.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 const RouteInfo = ({ directions, data }) => {
@@ -106,12 +106,12 @@ const RouteInfo = ({ directions, data }) => {
                 {routeInfo && (
                   <>
                     <p>
-                      Distance: {routeInfo.distance.text} ({routeInfo.distance.value}{" "}
-                      meters)
+                      Distance: {routeInfo.distance.text} (
+                      {routeInfo.distance.value} meters)
                     </p>
                     <p>
-                      Duration: {routeInfo.duration.text} ({routeInfo.duration.value}{" "}
-                      seconds)
+                      Duration: {routeInfo.duration.text} (
+                      {routeInfo.duration.value} seconds)
                     </p>
                   </>
                 )}
@@ -161,8 +161,6 @@ const RouteInfo = ({ directions, data }) => {
     </div>
   );
 };
-
-
 
 export default RouteInfo;
 

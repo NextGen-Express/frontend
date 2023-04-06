@@ -51,7 +51,7 @@ function Map({ center }) {
     if (!mapInstance) {
       const map = new window.google.maps.Map(mapRef.current, {
         center,
-        zoom: 10,
+        zoom: 12,
       });
 
       setMapInstance(map);
