@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import Logout from "./Logout";
 
 function Homepage() {
+
   const {
     origin,
     setPickupAddress,
@@ -49,6 +50,7 @@ function Homepage() {
     try {
       await Logout();
       console.log("Sign out successful");
+      localStorage.setItem('isLoggedIn', false);
       navigate("/login");
     } catch (error) {
       console.error("Sign out failed:", error);
@@ -101,6 +103,15 @@ function Homepage() {
       console.error(error);
     }
   };
+
+  //check for local flag
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn !== 'true') {
+      navigate('/login');
+    }
+  }, []);
+
 
   useEffect(() => {
     const handleClick = (event) => {
