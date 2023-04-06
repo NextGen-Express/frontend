@@ -3,6 +3,7 @@ import "./RouteInfo.css";
 import Map from "./../Map";
 import icon from "../../img/mencon.png";
 import { useNavigate, useLocation } from "react-router-dom";
+import Logout from "../Logout"
 
 
 const RouteInfo = ({ directions, data }) => {
@@ -44,6 +45,18 @@ const RouteInfo = ({ directions, data }) => {
     setDropdownVisible(!dropdownVisible);
   };
 
+  const handleSignOut = async () => {
+    try {
+      await Logout();
+      console.log("Sign out successful");
+      localStorage.setItem('isLoggedIn', false);
+      navigate("/login");
+    } catch (error) {
+      console.error("Sign out failed:", error);
+    }
+  };
+
+  // Extract route information from the directions object if available
   const routeInfo =
     directions && directions.routes[0] && directions.routes[0].legs[0];
 
@@ -91,8 +104,8 @@ const RouteInfo = ({ directions, data }) => {
         />
         {dropdownVisible && (
           <div className="dropdown-menu">
-                        <a onClick={() => navigate("/History")}>Orders</a>
-            <a onClick={() => navigate("/Login")}>Signout</a>
+            <a onClick={() => navigate("/History")}>Orders</a>
+            <a onClick={handleSignOut}>Signout</a>
           </div>
         )}
       </div>
