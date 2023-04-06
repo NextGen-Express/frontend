@@ -10,8 +10,10 @@ import {
 } from "../../src/constants.js";
 import useGoogleAutocomplete from "./useGoogleAutocomplete.js";
 import { useNavigate } from "react-router-dom";
+import Logout from "./Logout";
 
 function Homepage() {
+
   const {
     origin,
     setPickupAddress,
@@ -42,10 +44,18 @@ function Homepage() {
     setDropdownVisible(!dropdownVisible);
   };
 
-  const handleSignOut = () => {
-    // handle sign-out logic here
-  };
   const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    try {
+      await Logout();
+      console.log("Sign out successful");
+      localStorage.setItem('isLoggedIn', false);
+      navigate("/login");
+    } catch (error) {
+      console.error("Sign out failed:", error);
+    }
+  };
 
   const onSearchClick = async () => {
     console.log(origin);
@@ -69,6 +79,7 @@ function Homepage() {
       } else {
         const data = await response.json();
         // setDirections(data.directions);
+        // console.log(data);
         navigate("/carrier-selection", { state: { data } });
       }
     } catch (error) {
@@ -92,6 +103,15 @@ function Homepage() {
       console.error(error);
     }
   };
+
+  //check for local flag
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn !== 'true') {
+      navigate('/login');
+    }
+  }, []);
+
 
   useEffect(() => {
     const handleClick = (event) => {
@@ -118,7 +138,7 @@ function Homepage() {
         {dropdownVisible && (
           <div className="dropdown-menu">
             <a onClick={onHistoryClick}>Orders</a>
-            <a onClick={() => navigate("/Login")}>Signout</a>
+            <a onClick={handleSignOut}>Signout</a>
           </div>
         )}
       </div>
@@ -170,7 +190,7 @@ function Homepage() {
         <div className="map_wrapper">
           <Map
             center={cityCoordinates[selectedCity]}
-            zoom={10}
+            zoom={12}
             directions={directions}
           />
         </div>

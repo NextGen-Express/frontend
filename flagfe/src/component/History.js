@@ -8,6 +8,13 @@ function History({ path }) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn !== 'true') {
+      navigate('/login');
+    }
+  }, []);
+  
+  useEffect(() => {
     fetch(path)
       .then((response) => response.json())
       .then((data) => setData(data))
