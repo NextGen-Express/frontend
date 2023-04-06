@@ -179,7 +179,7 @@ function Homepage() {
         <div className="map_wrapper">
           <Map
             center={cityCoordinates[selectedCity]}
-            zoom={10}
+            zoom={12}
             directions={directions}
           />
         </div>
