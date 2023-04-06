@@ -95,7 +95,7 @@ const RouteInfo = ({ directions, data }) => {
   return (
     <div className="root">
       <div className="app_header">
-        <div className="app_header_left">LaiEx</div>
+        <div className="app_header_left">-NextGen Express-</div>
         <img
           className="user_icon"
           src={icon}
