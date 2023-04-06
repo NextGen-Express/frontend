@@ -3,9 +3,13 @@ import "./Homepage.css";
 import React, { useState, useEffect } from "react";
 import Map from "./Map";
 import { handleSearch } from "../utils";
-import { cityCoordinates, useMapSearch, globleSearch } from "../../src/constants.js";
+import {
+  cityCoordinates,
+  useMapSearch,
+  globleSearch,
+} from "../../src/constants.js";
 import useGoogleAutocomplete from "./useGoogleAutocomplete.js";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Homepage() {
   const {
@@ -43,48 +47,46 @@ function Homepage() {
   };
   const navigate = useNavigate();
 
-    const onSearchClick = async () => {
-      console.log(origin);
-      console.log(destination);
-      console.log(weight);
+  const onSearchClick = async () => {
+    console.log(origin);
+    console.log(destination);
+    console.log(weight);
 
-      try {
-        const response = await fetch('/home/search', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            origin,
-            destination,
-            weight,
-          }),
-        });
-        if (!response.ok) {
-          throw new Error('Something went wrong');
-        } else {
-  
+    try {
+      const response = await fetch("/home/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          origin,
+          destination,
+          weight,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("Something went wrong");
+      } else {
         const data = await response.json();
         // setDirections(data.directions);
         navigate("/carrier-selection", { state: { data } });
       }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const [jsonData, setJsonData] = useState(null);
 
   const onHistoryClick = async () => {
     try {
-      const response = await fetch('/home/history');
+      const response = await fetch("/home/history");
       if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }else{
-      const data = await response.json();
-      setJsonData(data);
-      navigate("/History", { state: { jsonData } });
+        throw new Error("Failed to fetch data");
+      } else {
+        const data = await response.json();
+        setJsonData(data);
+        navigate("/History", { state: { jsonData } });
       }
     } catch (error) {
       console.error(error);
@@ -106,7 +108,7 @@ function Homepage() {
   return (
     <div className="root">
       <div className="app_header">
-        <div className="app_header_left">-LaiEx-</div>
+        <div className="app_header_left">-NextGen Express-</div>
         <img
           className="user_icon"
           src={icon}

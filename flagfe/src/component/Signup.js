@@ -84,23 +84,23 @@ function Signup() {
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>
-          Username:
+          Username:*
           <input type="text" value={username} onChange={handleUsernameChange} />
         </label>
         <label>
-          First Name:
+          First Name:*
           <input type="text" value={first_name} onChange={handleFirstNameChange} />
         </label>
         <label>
-          Last Name:
+          Last Name:*
           <input type="text" value={last_name} onChange={handleLastNameChange} />
         </label>
         <label>
-          Password:
+          Password:*
           <input type="password" value={password} onChange={handlePasswordChange} />
         </label>
         <label>
-          Phone Number:
+          Phone Number:*
           <input type="phone" value={phone_number} onChange={handlePhoneNumberChange} />
         </label>
         {/* <label>
