@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./RouteInfo.css";
 import Map from "./../Map";
 import icon from "../../img/mencon.png";
 import { useNavigate } from "react-router-dom";
 
-const RouteInfo = ({ directions }) => {
+
+const RouteInfo = ({ directions, data }) => {
   const [carrierType, setCarrierType] = useState("Robot Car");
+
+  const [estimatedPickupTime, setEstimatedPickupTime] = useState("00:00");
+  const [estimatedDeliveryTime, setEstimatedDeliveryTime] = useState("00:00");
+  const [price, setPrice] = useState("0.00");
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -13,15 +18,66 @@ const RouteInfo = ({ directions }) => {
     setCarrierType(e.target.value);
   };
 
+  useEffect(() => {
+    if (carrierType === "Robot Car" && data.groundPlan) {
+      const pickTime = new Date(data.groundPlan.estimatedPickTime);
+      const deliveryTime = new Date(data.groundPlan.estimatedDeliveryTime);
+      setEstimatedPickupTime(`${pickTime.getHours()}:${pickTime.getMinutes()}`);
+      setEstimatedDeliveryTime(
+        `${deliveryTime.getHours()}:${deliveryTime.getMinutes()}`
+      );
+      setPrice(data.groundPlan.price.toFixed(2));
+    } else if (carrierType === "UAV" && data.uavPlan) {
+      const pickTime = new Date(data.uavPlan.estimatedPickTime);
+      const deliveryTime = new Date(data.uavPlan.estimatedDeliveryTime);
+      setEstimatedPickupTime(`${pickTime.getHours()}:${pickTime.getMinutes()}`);
+      setEstimatedDeliveryTime(
+        `${deliveryTime.getHours()}:${deliveryTime.getMinutes()}`
+      );
+      setPrice(data.uavPlan.price.toFixed(2));
+    }
+  }, [carrierType, data]);
+
   const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
   };
 
-  // Extract route information from the directions object if available
   const routeInfo =
     directions && directions.routes[0] && directions.routes[0].legs[0];
+
+  // New function to handle the "Book" button click
+  const onBookClick = async () => {
+    const selectedPlan = carrierType === "Robot Car" ? data.groundPlan : data.uavPlan;
+    const routeInfo = selectedPlan.route.legs[0];
+    const payload = {
+      estimated_pick_time: selectedPlan.estimatedPickTime,
+      estimated_delivery_time: selectedPlan.estimatedDeliveryTime,
+      pickup_addr: routeInfo.startAddress,
+      delivery_addr: routeInfo.endAddress,
+      carrier_id: selectedPlan.carrierId,
+      price: selectedPlan.price.toFixed(2),
+    };
+
+    try {
+      const response = await fetch("/book", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) {
+        throw new Error("Something went wrong");
+      } else {
+        // Handle successful booking (navigate to stripe is also here?)
+        console.log("Booking successful");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="root">
@@ -35,7 +91,7 @@ const RouteInfo = ({ directions }) => {
         />
         {dropdownVisible && (
           <div className="dropdown-menu">
-            <a onClick={() => navigate("/History")}>Orders</a>
+                        <a onClick={() => navigate("/History")}>Orders</a>
             <a onClick={() => navigate("/Login")}>Signout</a>
           </div>
         )}
@@ -63,19 +119,19 @@ const RouteInfo = ({ directions }) => {
                   <div className="info-block">
                     <h4>Estimated_Pickup_Time:</h4>
                     <div className="number-display">
-                      <span>00:00</span>
+                      <span>{estimatedPickupTime}</span>
                     </div>
                   </div>
                   <div className="info-block">
                     <h4>Estimated_Delivery_Time:</h4>
                     <div className="number-display">
-                      <span>00:00</span>
+                      <span>{estimatedDeliveryTime}</span>
                     </div>
                   </div>
                   <div className="info-block">
                     <h4>Price:</h4>
                     <div className="number-display">
-                      <span>0.00</span>
+                      <span>${price}</span>
                     </div>
                   </div>
                 </div>
@@ -92,7 +148,8 @@ const RouteInfo = ({ directions }) => {
                 </select>
               </div>
               <div className="book-section">
-                <button className="book-button">Book</button>
+                {/* Updated the onClick event */}
+                <button className="book-button" onClick={onBookClick}>Book</button>
               </div>
             </div>
           </form>
@@ -108,3 +165,4 @@ const RouteInfo = ({ directions }) => {
 
 
 export default RouteInfo;
+
