@@ -6,9 +6,6 @@ import RouteInfo from "./RouteInfo";
 import Map from "../Map";
 import { cityCoordinates, useMapSearch } from "../../constants.js";
 
-// For data loading of json -- TEST PURPOSE
-import response from "./response.json";
-
 const CarrierSelection = () => {
   const { state } = useLocation();
   console.log(state);
@@ -20,9 +17,9 @@ const CarrierSelection = () => {
   const navigate = useNavigate();
   //check for local flag
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (isLoggedIn !== 'true') {
-      navigate('/login');
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn !== "true") {
+      navigate("/login");
     }
   }, []);
 
@@ -39,7 +36,12 @@ const CarrierSelection = () => {
   return (
     <div className="content">
       <div className="route-info-wrapper">
+<<<<<<< Updated upstream
         <RouteInfo data={response} directions={directions} />
+=======
+        // For data loading of json -- TEST PURPOSE
+        <RouteInfo data={state.data} directions={directions} />
+>>>>>>> Stashed changes
       </div>
       <div className="map_wrapper">
         <Map center={center} />
