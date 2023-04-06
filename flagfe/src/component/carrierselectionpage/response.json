@@ -1,0 +1,354 @@
+{
+    "groundPlan": {
+        "carrierId": 3,
+        "carrierType": "RobotCar",
+        "distance": 8956,
+        "weight": 7,
+        "estimatedPickTime": "2023-04-05T19:42:58.190859",
+        "estimatedDeliveryTime": "2023-04-05T19:53:11.190859",
+        "price": 27.980014814265672,
+        "route": {
+            "summary": "I-280 N",
+            "legs": [
+                {
+                    "steps": [
+                        {
+                            "htmlInstructions": "Head <b>east</b> on <b>Ocean Ave</b> toward <b>Lee Ave</b>",
+                            "distance": {
+                                "inMeters": 706,
+                                "humanReadable": "0.4 mi"
+                            },
+                            "maneuver": null,
+                            "duration": {
+                                "inSeconds": 123,
+                                "humanReadable": "2 mins"
+                            },
+                            "startLocation": {
+                                "lat": 37.7236686,
+                                "lng": -122.4550868
+                            },
+                            "endLocation": {
+                                "lat": 37.7229205,
+                                "lng": -122.4472015
+                            },
+                            "steps": null,
+                            "polyline": {
+                                "encodedPath": "}{feFh_ljVBS\\iCFc@Fg@F[Dc@D[Hk@BUFc@DYDOLs@DSDI@GFc@Ba@@I?I@O?U@UBo@AmB?y@?{A?G?c@?W?kAAaC?k@?S?I?Y?k@?m@?C?]?A?M?m@"
+                            },
+                            "travelMode": "DRIVING",
+                            "transitDetails": null
+                        },
+                        {
+                            "htmlInstructions": "Turn <b>left</b>",
+                            "distance": {
+                                "inMeters": 11,
+                                "humanReadable": "36 ft"
+                            },
+                            "maneuver": "turn-left",
+                            "duration": {
+                                "inSeconds": 2,
+                                "humanReadable": "1 min"
+                            },
+                            "startLocation": {
+                                "lat": 37.7229205,
+                                "lng": -122.4472015
+                            },
+                            "endLocation": {
+                                "lat": 37.7230194,
+                                "lng": -122.4471916
+                            },
+                            "steps": null,
+                            "polyline": {
+                                "encodedPath": "gwfeF~mjjVE?CAC?E?"
+                            },
+                            "travelMode": "DRIVING",
+                            "transitDetails": null
+                        },
+                        {
+                            "htmlInstructions": "Merge onto <b>I-280 N</b> via the ramp to <b>Downtown SF</b>",
+                            "distance": {
+                                "inMeters": 2560,
+                                "humanReadable": "1.6 mi"
+                            },
+                            "maneuver": null,
+                            "duration": {
+                                "inSeconds": 104,
+                                "humanReadable": "2 mins"
+                            },
+                            "startLocation": {
+                                "lat": 37.7230194,
+                                "lng": -122.4471916
+                            },
+                            "endLocation": {
+                                "lat": 37.7313909,
+                                "lng": -122.4233594
+                            },
+                            "steps": null,
+                            "polyline": {
+                                "encodedPath": "{wfeF|mjjVE?MAUAu@GIAK?IAA?UCOCGAOEMCOAOGaA]A?cAa@a@OMGOGCAA?A?A@SD{@i@UOWUkA}@GGc@_@GGGEa@a@s@u@UUGIKMMOIKGGIKY][g@c@q@IOYg@Q[ACQ_@AAISWk@IQIQi@wAKYUo@IYUo@EOg@}ASm@KYEUc@{ACGW_A}@_DWcAI]Kc@I]G[AEEOQ{@Qw@Ic@I]EWCIGYI_@Ic@G]GYG_@Ie@Ie@GYEYKk@Kk@O}@O}@a@eCSeAYaBM}@SmBCQCi@Cg@Ca@Ai@?_@A{@?O@q@?G@S?C@Q?SB_@?E@KH_A?KFc@BUX_CNkABSDc@F_@BUNqAD[D]?CB[Dc@B]B_@Ba@B_@@O@Q@_@@e@@[@]?c@?_@@G?Y?a@?OAS?G?]C{@A_@?Q"
+                            },
+                            "travelMode": "DRIVING",
+                            "transitDetails": null
+                        },
+                        {
+                            "htmlInstructions": "Take exit <b>53</b> to merge onto <b>Alemany Blvd</b>",
+                            "distance": {
+                                "inMeters": 404,
+                                "humanReadable": "0.3 mi"
+                            },
+                            "maneuver": "ramp-right",
+                            "duration": {
+                                "inSeconds": 19,
+                                "humanReadable": "1 min"
+                            },
+                            "startLocation": {
+                                "lat": 37.7313909,
+                                "lng": -122.4233594
+                            },
+                            "endLocation": {
+                                "lat": 37.7316941,
+                                "lng": -122.4188215
+                            },
+                            "steps": null,
+                            "polyline": {
+                                "encodedPath": "elheF~xejVL[?AEeBCe@?MAMAa@C]GaAMkBGyAEg@Is@AYAU?GA_@AgAEo@BqA"
+                            },
+                            "travelMode": "DRIVING",
+                            "transitDetails": null
+                        },
+                        {
+                            "htmlInstructions": "Slight <b>right</b> to stay on <b>Alemany Blvd</b>",
+                            "distance": {
+                                "inMeters": 1233,
+                                "humanReadable": "0.8 mi"
+                            },
+                            "maneuver": "turn-slight-right",
+                            "duration": {
+                                "inSeconds": 117,
+                                "humanReadable": "2 mins"
+                            },
+                            "startLocation": {
+                                "lat": 37.7316941,
+                                "lng": -122.4188215
+                            },
+                            "endLocation": {
+                                "lat": 37.7363471,
+                                "lng": -122.4071854
+                            },
+                            "steps": null,
+                            "polyline": {
+                                "encodedPath": "anheFr|djVBK@C@EFaDDaBBg@@U@U@ULeC@[@O?M?Q?I?KCQAMAIAICICKCKEMIQKQCGMQKKCEEEIGECKGKGo@Yk@YSMOIGGOOGIEEEIGKCCAGGKCIGSQg@_@iAOa@GQMa@KWGMO[KSg@w@U][i@MSO_@c@cA_@y@}@_B?Ak@_AWa@Ue@EKGKEOGOK[EOCMCOCQAIAEC[Gk@Ea@?_@AK?GCY?EA?COCOEIEKMSAAKOKKMKGC"
+                            },
+                            "travelMode": "DRIVING",
+                            "transitDetails": null
+                        },
+                        {
+                            "htmlInstructions": "Continue straight to stay on <b>Alemany Blvd</b>",
+                            "distance": {
+                                "inMeters": 152,
+                                "humanReadable": "499 ft"
+                            },
+                            "maneuver": "straight",
+                            "duration": {
+                                "inSeconds": 27,
+                                "humanReadable": "1 min"
+                            },
+                            "startLocation": {
+                                "lat": 37.7363471,
+                                "lng": -122.4071854
+                            },
+                            "endLocation": {
+                                "lat": 37.737632,
+                                "lng": -122.4072864
+                            },
+                            "steps": null,
+                            "polyline": {
+                                "encodedPath": "ekieF|sbjVKOEEMECAKCGAKAOAO?M?UDKBMFYH]LKDYJ"
+                            },
+                            "travelMode": "DRIVING",
+                            "transitDetails": null
+                        },
+                        {
+                            "htmlInstructions": "Sharp <b>right</b> onto <b>Bayshore Blvd</b>",
+                            "distance": {
+                                "inMeters": 883,
+                                "humanReadable": "0.5 mi"
+                            },
+                            "maneuver": "turn-sharp-right",
+                            "duration": {
+                                "inSeconds": 122,
+                                "humanReadable": "2 mins"
+                            },
+                            "startLocation": {
+                                "lat": 37.737632,
+                                "lng": -122.4072864
+                            },
+                            "endLocation": {
+                                "lat": 37.7306635,
+                                "lng": -122.4034397
+                            },
+                            "steps": null,
+                            "polyline": {
+                                "encodedPath": "esieFptbjVKOCGACAC?A?A?C?C@A?C@CFI`AKFAb@EZCNCNA@?@?^C\\A^CTGTCNCHAHARENEJEDA@AJELGHCh@_@@AHGZU`@[XU@A@AXUJGBCLK`@[HG`@UD?F?JEFEDA^SXO@AJG@?@AHEBA@ADCBABC@?LGDEDAn@]PMp@YVKBAHCDCBCDA`@SXMHE^OJE\\Ot@_@f@YbBs@"
+                            },
+                            "travelMode": "DRIVING",
+                            "transitDetails": null
+                        },
+                        {
+                            "htmlInstructions": "Slight <b>left</b> onto <b>Carroll Ave</b>",
+                            "distance": {
+                                "inMeters": 278,
+                                "humanReadable": "0.2 mi"
+                            },
+                            "maneuver": "turn-slight-left",
+                            "duration": {
+                                "inSeconds": 42,
+                                "humanReadable": "1 min"
+                            },
+                            "startLocation": {
+                                "lat": 37.7306635,
+                                "lng": -122.4034397
+                            },
+                            "endLocation": {
+                                "lat": 37.72921660000001,
+                                "lng": -122.4008631
+                            },
+                            "steps": null,
+                            "polyline": {
+                                "encodedPath": "sgheFn|ajVHQDKJSTk@Te@BIfByD|AcDLW"
+                            },
+                            "travelMode": "DRIVING",
+                            "transitDetails": null
+                        },
+                        {
+                            "htmlInstructions": "Turn <b>left</b> at the 2nd cross street onto <b>Phelps St</b>",
+                            "distance": {
+                                "inMeters": 151,
+                                "humanReadable": "495 ft"
+                            },
+                            "maneuver": "turn-left",
+                            "duration": {
+                                "inSeconds": 25,
+                                "humanReadable": "1 min"
+                            },
+                            "startLocation": {
+                                "lat": 37.72921660000001,
+                                "lng": -122.4008631
+                            },
+                            "endLocation": {
+                                "lat": 37.7303004,
+                                "lng": -122.399844
+                            },
+                            "steps": null,
+                            "polyline": {
+                                "encodedPath": "s~geFjlajV}BqBGEcA{@EEGQ"
+                            },
+                            "travelMode": "DRIVING",
+                            "transitDetails": null
+                        },
+                        {
+                            "htmlInstructions": "Turn <b>right</b> onto <b>Williams Ave</b>",
+                            "distance": {
+                                "inMeters": 58,
+                                "humanReadable": "190 ft"
+                            },
+                            "maneuver": "turn-right",
+                            "duration": {
+                                "inSeconds": 8,
+                                "humanReadable": "1 min"
+                            },
+                            "startLocation": {
+                                "lat": 37.7303004,
+                                "lng": -122.399844
+                            },
+                            "endLocation": {
+                                "lat": 37.7302112,
+                                "lng": -122.3991943
+                            },
+                            "steps": null,
+                            "polyline": {
+                                "encodedPath": "keheF~eajVLcBB]"
+                            },
+                            "travelMode": "DRIVING",
+                            "transitDetails": null
+                        },
+                        {
+                            "htmlInstructions": "Turn <b>right</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                            "distance": {
+                                "inMeters": 19,
+                                "humanReadable": "62 ft"
+                            },
+                            "maneuver": "turn-right",
+                            "duration": {
+                                "inSeconds": 24,
+                                "humanReadable": "1 min"
+                            },
+                            "startLocation": {
+                                "lat": 37.7302112,
+                                "lng": -122.3991943
+                            },
+                            "endLocation": {
+                                "lat": 37.7300406,
+                                "lng": -122.3992401
+                            },
+                            "steps": null,
+                            "polyline": {
+                                "encodedPath": "ydheF|aajV`@H"
+                            },
+                            "travelMode": "DRIVING",
+                            "transitDetails": null
+                        }
+                    ],
+                    "distance": {
+                        "inMeters": 6455,
+                        "humanReadable": "4.0 mi"
+                    },
+                    "duration": {
+                        "inSeconds": 613,
+                        "humanReadable": "10 mins"
+                    },
+                    "durationInTraffic": null,
+                    "arrivalTime": null,
+                    "departureTime": null,
+                    "startLocation": {
+                        "lat": 37.7236686,
+                        "lng": -122.4550868
+                    },
+                    "endLocation": {
+                        "lat": 37.7300406,
+                        "lng": -122.3992401
+                    },
+                    "startAddress": "1150 Ocean Ave, San Francisco, CA 94112, USA",
+                    "endAddress": "345 Williams Ave, San Francisco, CA 94124, USA"
+                }
+            ],
+            "waypointOrder": [],
+            "overviewPolyline": {
+                "encodedPath": "}{feFh_ljVnAqJJy@Ji@RgAFQLyAFkBCuO?aE?{ASAaCO}@O]EqAe@uBy@WIUFqAy@cBsAk@g@q@o@qAuAk@q@cBcCw@wAu@aBiAuC{@iCgAeDm@yBwBaI_@cBoAaGgAaGmC{Oa@kDG{@IsC?eCB}@NqBd@eE`AeIZsEFsBBiBA_BEaC?QL[?AKgD[mFMaCKmAEeCEo@BqADORqHRgEBkAEu@Ki@_@}@a@k@a@Y{BiAWQWYW_@Uq@iAeDYy@Wi@eBsCaBqDaCcEi@mA]iAKq@KgAEaAEs@Oi@a@q@m@k@c@QSC_@Ac@DYJ}Ah@OWCG?KJSlD]|@E^CTGd@GRCt@Sd@SpA_A~@u@v@m@j@c@`@UD?RELGfAm@\\QXQt@_@PMp@YZMNGdAg@rAk@|Ay@bBs@HQP_@j@qAvE_KoEyDGQLcBB]`@H"
+            },
+            "bounds": {
+                "northeast": {
+                    "lat": 37.7377265,
+                    "lng": -122.3991943
+                },
+                "southwest": {
+                    "lat": 37.7228963,
+                    "lng": -122.4550868
+                }
+            },
+            "copyrights": "Map data ©2023 Google",
+            "fare": null,
+            "warnings": []
+        }
+    },
+    "uavPlan": {
+        "carrierId": 4,
+        "carrierType": "UAV",
+        "distance": 7032.486255121447,
+        "weight": 7,
+        "estimatedPickTime": "2023-04-05T19:39:21.769903",
+        "estimatedDeliveryTime": "2023-04-05T19:47:39.769903",
+        "price": 31.292200713761385,
+        "route": null
+    }
+}
