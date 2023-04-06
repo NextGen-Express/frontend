@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./History.css";
 
 function History({ path }) {
-  const [data, setData] = useState([]);
   const [finalPrice, setFinalPrice] = useState("$100.00");
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const orders = state && state.data ? state.data : [];
+  console.log(orders);
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (isLoggedIn !== 'true') {
-      navigate('/login');
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn !== "true") {
+      navigate("/login");
     }
   }, []);
-  
-  useEffect(() => {
-    fetch(path)
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error(error));
-  }, [path]);
 
-  data.map((order) => setFinalPrice(order["price"]));
+  // data.map((order) => setFinalPrice(order["price"]));
 
   const handleBackClick = () => {
     navigate("/");
@@ -34,17 +29,16 @@ function History({ path }) {
         style={{ maxHeight: "500px", overflowY: "scroll" }}
       >
         <h1>Order Information</h1>
-        {data.map((order) => (
-          <div key={order.id}>
-            {Object.keys(order)
-              .filter((key) => key !== "price")
-              .map((key) => (
-                <p id={key} key={key}>
-                  {order[key]}
-                </p>
-              ))}
-          </div>
-        ))}
+        <div>
+          {orders.map((order) => (
+            <p key={order.orderId}>
+              Order ID: {order.orderId}, Status: {order.status}, Pickup Address:{" "}
+              {order.pickupAddr}, Delivery Address: {order.deliveryAddr},
+              Estimated Pickup Time: {order.estimatedPickTime}, Estimated
+              Delivery Time: {order.estimatedDeliveryTime}, Price: {order.price}
+            </p>
+          ))}
+        </div>
       </div>
 
       <div className="final-price">

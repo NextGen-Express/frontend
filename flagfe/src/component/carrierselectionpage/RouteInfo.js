@@ -3,8 +3,7 @@ import "./RouteInfo.css";
 import Map from "./../Map";
 import icon from "../../img/mencon.png";
 import { useNavigate, useLocation } from "react-router-dom";
-import Logout from "../Logout"
-
+import Logout from "../Logout";
 
 const RouteInfo = ({ directions, data }) => {
   const [carrierType, setCarrierType] = useState("Robot Car");
@@ -50,7 +49,7 @@ const RouteInfo = ({ directions, data }) => {
     try {
       await Logout();
       console.log("Sign out successful");
-      localStorage.setItem('isLoggedIn', false);
+      localStorage.setItem("isLoggedIn", false);
       navigate("/login");
     } catch (error) {
       console.error("Sign out failed:", error);
@@ -64,13 +63,20 @@ const RouteInfo = ({ directions, data }) => {
   // New function to handle the "Book" button click
   const onBookClick = async (e) => {
     e.preventDefault();
-    const selectedPlan = carrierType === "Robot Car" ? data.groundPlan : data.uavPlan;
+    const selectedPlan =
+      carrierType === "Robot Car" ? data.groundPlan : data.uavPlan;
     // const routeInfo = selectedPlan.route.legs[0];
     const payload = {
       estimated_pick_time: selectedPlan.estimatedPickTime,
       estimated_delivery_time: selectedPlan.estimatedDeliveryTime,
-      pickup_addr: carrierType === "Robot Car" ? selectedPlan.route.legs[0].startAddress : selectedPlan.origin,
-      delivery_addr: carrierType === "Robot Car" ? selectedPlan.route.legs[0].endAddress : selectedPlan.destionation,
+      pickup_addr:
+        carrierType === "Robot Car"
+          ? selectedPlan.route.legs[0].startAddress
+          : selectedPlan.origin,
+      delivery_addr:
+        carrierType === "Robot Car"
+          ? selectedPlan.route.legs[0].endAddress
+          : selectedPlan.destionation,
       carrier_id: selectedPlan.carrierId,
       price: selectedPlan.price.toFixed(2),
     };
@@ -88,6 +94,9 @@ const RouteInfo = ({ directions, data }) => {
       } else {
         // Handle successful booking (navigate to stripe is also here?)
         console.log("Booking successful");
+        const responseData = await response.json();
+        const url = responseData.url;
+        window.location.href = url;
       }
     } catch (error) {
       console.error(error);
@@ -164,7 +173,9 @@ const RouteInfo = ({ directions, data }) => {
               </div>
               <div className="book-section">
                 {/* Updated the onClick event */}
-                <button className="book-button" onClick={(e) => onBookClick(e)}>Book</button>
+                <button className="book-button" onClick={(e) => onBookClick(e)}>
+                  Book
+                </button>
               </div>
             </div>
           </form>
@@ -178,4 +189,3 @@ const RouteInfo = ({ directions, data }) => {
 };
 
 export default RouteInfo;
-

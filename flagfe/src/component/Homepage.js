@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 import Logout from "./Logout";
 
 function Homepage() {
-
   const {
     origin,
     setPickupAddress,
@@ -50,7 +49,7 @@ function Homepage() {
     try {
       await Logout();
       console.log("Sign out successful");
-      localStorage.setItem('isLoggedIn', false);
+      localStorage.setItem("isLoggedIn", false);
       navigate("/login");
     } catch (error) {
       console.error("Sign out failed:", error);
@@ -91,13 +90,17 @@ function Homepage() {
 
   const onHistoryClick = async () => {
     try {
-      const response = await fetch("/home/history");
+      const response = await fetch("/history", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (!response.ok) {
-        throw new Error("Failed to fetch data");
+        throw new Error("Something went wrong");
       } else {
         const data = await response.json();
-        setJsonData(data);
-        navigate("/History", { state: { jsonData } });
+        navigate("/history", { state: { data } });
       }
     } catch (error) {
       console.error(error);
@@ -106,12 +109,11 @@ function Homepage() {
 
   //check for local flag
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (isLoggedIn !== 'true') {
-      navigate('/login');
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn !== "true") {
+      navigate("/login");
     }
   }, []);
-
 
   useEffect(() => {
     const handleClick = (event) => {
