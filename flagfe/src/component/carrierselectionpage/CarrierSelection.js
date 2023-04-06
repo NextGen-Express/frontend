@@ -39,6 +39,7 @@ const CarrierSelection = () => {
   return (
     <div className="content">
       <div className="route-info-wrapper">
+        // For data loading of json -- TEST PURPOSE
         <RouteInfo data={response} directions={directions} />
       </div>
       <div className="map_wrapper">
