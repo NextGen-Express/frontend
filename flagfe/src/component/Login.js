@@ -22,7 +22,6 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        
         const formData = new FormData();
         formData.append('username', username);
         formData.append('password', password);
@@ -33,6 +32,7 @@ function Login() {
         })
         .then(response => {  
             if (response.ok) {
+                localStorage.setItem('isLoggedIn', true);
                 navigate('/');
             } else {
                 setError('Invalid username or password');
