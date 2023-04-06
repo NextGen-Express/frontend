@@ -36,12 +36,7 @@ const CarrierSelection = () => {
   return (
     <div className="content">
       <div className="route-info-wrapper">
-<<<<<<< Updated upstream
-        <RouteInfo data={response} directions={directions} />
-=======
-        // For data loading of json -- TEST PURPOSE
         <RouteInfo data={state.data} directions={directions} />
->>>>>>> Stashed changes
       </div>
       <div className="map_wrapper">
         <Map center={center} />
