@@ -69,7 +69,9 @@ function Map({ center, route }) {
       });
 
       if (!directionsRenderer) {
-        const newDirectionsRenderer = new window.google.maps.DirectionsRenderer();
+        const newDirectionsRenderer = new window.google.maps.DirectionsRenderer({
+          suppressMarkers: true,
+        });
         newDirectionsRenderer.setMap(map);
         setDirectionsRenderer(newDirectionsRenderer);
       }
@@ -82,6 +84,18 @@ function Map({ center, route }) {
   useEffect(() => {
     if (directionsRenderer && route) {
       directionsRenderer.setDirections(route);
+
+      const startMarker = new window.google.maps.Marker({
+        position: route.routes[0].legs[0].start_location,
+        map: mapInstance,
+        label: "Start",
+      });
+
+      const endMarker = new window.google.maps.Marker({
+        position: route.routes[0].legs[0].end_location,
+        map: mapInstance,
+        label: "End",
+      });
     }
   }, [directionsRenderer, route]);
 
