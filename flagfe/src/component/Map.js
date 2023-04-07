@@ -23,10 +23,11 @@ const markerLocations = [
   },
 ];
 
-function Map({ center }) {
+function Map({ center, route }) {
   const mapRef = useRef(null);
   const [mapInstance, setMapInstance] = useState(null);
   const [infoWindow, setInfoWindow] = useState(null);
+  const [directionsRenderer, setDirectionsRenderer] = useState(null);
 
   const createMarker = (location) => {
     const marker = new window.google.maps.Marker({
@@ -66,11 +67,23 @@ function Map({ center }) {
         newInfoWindow.open(map);
         setInfoWindow(newInfoWindow);
       });
+
+      if (!directionsRenderer) {
+        const newDirectionsRenderer = new window.google.maps.DirectionsRenderer();
+        newDirectionsRenderer.setMap(map);
+        setDirectionsRenderer(newDirectionsRenderer);
+      }
     } else {
       mapInstance.panTo(center);
       markerLocations.forEach(createMarker);
     }
   }, [center, mapInstance]);
+
+  useEffect(() => {
+    if (directionsRenderer && route) {
+      directionsRenderer.setDirections(route);
+    }
+  }, [directionsRenderer, route]);
 
   return <div ref={mapRef} style={containerStyle}></div>;
 }

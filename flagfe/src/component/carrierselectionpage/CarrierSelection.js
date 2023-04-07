@@ -5,13 +5,21 @@ import { useLocation, useNavigate } from "react-router-dom";
 import RouteInfo from "./RouteInfo";
 import Map from "../Map";
 import { cityCoordinates, useMapSearch } from "../../constants.js";
+import getGroundDirection from "./GroundRoute";
 
 const CarrierSelection = () => {
   const { state } = useLocation();
-  console.log(state);
+  //console.log(state);
 
-  const location = useLocation();
-  const directions = location.state && location.state.directions;
+  // get origin and destination, and calculate routes
+  const origin = state.data.groundPlan.origin;
+  const destionation = state.data.groundPlan.destionation;
+  const groundRoute = getGroundDirection(origin, destionation);
+  const uavRoute = getGroundDirection(origin, destionation);
+  //console.log(groundRoute);
+  const directions = [groundRoute, uavRoute];
+  //console.log(directions);
+
   const [center, setCenter] = useState(cityCoordinates["San Francisco"]);
 
   const navigate = useNavigate();
@@ -23,20 +31,13 @@ const CarrierSelection = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (directions) {
-      const startLatLng = new window.google.maps.LatLng(
-        directions.routes[0].legs[0].start_location.lat(),
-        directions.routes[0].legs[0].start_location.lng()
-      );
-      setCenter(startLatLng);
-    }
-  }, [directions]);
-
   return (
     <div className="content">
       <div className="route-info-wrapper">
+<<<<<<< Updated upstream
         // For data loading of json -- TEST PURPOSE
+=======
+>>>>>>> Stashed changes
         <RouteInfo data={state && state.data} directions={directions} />
       </div>
       <div className="map_wrapper">
