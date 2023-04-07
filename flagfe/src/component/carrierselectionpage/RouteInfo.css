@@ -4,14 +4,14 @@
 }
 
 .route-info {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: rgb(230, 230, 230);
-    height: 90vh;
-    padding: 20px;
-    box-sizing: border-box;
-  }
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgb(230, 230, 230);
+  height: 90vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
 
 /* Map wrapper */
 .map_wrapper {
@@ -29,7 +29,7 @@
 
 /* Content */
 .content {
-  font-size: 1.0em;
+  font-size: 1em;
   display: flex;
   width: 100vw;
   height: 40vw;
@@ -72,7 +72,7 @@
   height: 100%;
   cursor: pointer;
 }
-  
+
 .order-info-block {
   display: flex;
   flex-direction: column;
@@ -80,14 +80,14 @@
   height: 80vh;
   padding: 20px;
 }
-  
+
 .route-info-section,
 .carrier-type-section,
 .book-section {
   display: flex;
   flex-direction: column;
 }
-  
+
 .route-info-section h3{
   margin-bottom: 20px;
   font-size: 1.2em;
@@ -95,6 +95,7 @@
   top: -50px;
   left: 20px;
 }
+
 .carrier-type-section h3 {
   margin-bottom: 20px;
   font-size: 1.2em;
@@ -102,13 +103,13 @@
   top: 17px;
   left: 35px;
 }
-  
+
 .carrier-type-dropdown {
   height: 40px;
   border-radius: 10px 10px 10px 10px;
   border-width: 0;
 }
-  
+
 .book-button {
   margin-top: 20px;
   margin-left: 60px;
@@ -143,3 +144,9 @@
   flex-direction: column;
   gap: 50px;
 }
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+}
+

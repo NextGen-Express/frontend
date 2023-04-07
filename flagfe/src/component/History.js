@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./History.css";
+import OrderTable from "./OrderTable";
 
-function History({ path }) {
-  const [finalPrice, setFinalPrice] = useState("$100.00");
+function History() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const orders = state && state.data ? state.data : [];
@@ -16,11 +16,26 @@ function History({ path }) {
     }
   }, []);
 
-  // data.map((order) => setFinalPrice(order["price"]));
-
   const handleBackClick = () => {
     navigate("/");
   };
+  const formattedOrders = orders.map((order) => ({
+    carrierId: order.carrierId,
+    dest: order.deliveryAddr,
+    deliveryTime: order.estimatedDeliveryTime,
+    pickupTime: order.estimatedPickTime,
+    orderId: order.orderId,
+    orderTime: order.orderTime,
+    pickup: order.pickupAddr,
+    price: order.price,
+    status: order.status,
+  }));
+
+  const totalCost = formattedOrders
+    .reduce((acc, order) => {
+      return acc + order.price;
+    }, 0)
+    .toFixed(2);
 
   return (
     <div className="root">
@@ -29,21 +44,12 @@ function History({ path }) {
         style={{ maxHeight: "500px", overflowY: "scroll" }}
       >
         <h1>Order Information</h1>
-        <div>
-          {orders.map((order) => (
-            <p key={order.orderId}>
-              Order ID: {order.orderId}, Status: {order.status}, Pickup Address:{" "}
-              {order.pickupAddr}, Delivery Address: {order.deliveryAddr},
-              Estimated Pickup Time: {order.estimatedPickTime}, Estimated
-              Delivery Time: {order.estimatedDeliveryTime}, Price: {order.price}
-            </p>
-          ))}
-        </div>
+        <OrderTable data={formattedOrders} />
       </div>
 
       <div className="final-price">
         <h1 className="price">Final Price:</h1>
-        <p id="final-price">{finalPrice}</p>
+        <p id="final-price">${totalCost}</p>
         <button id="back-btn" onClick={handleBackClick}>
           Back
         </button>
