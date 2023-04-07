@@ -6,11 +6,17 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Logout from "../Logout";
 
 const RouteInfo = ({ directions, data }) => {
+  // console.log(data);
+  //console.log(directions);
+  //console.log(directions[0]);
+  console.log(directions);
+
   const [carrierType, setCarrierType] = useState("Robot Car");
 
   const [estimatedPickupTime, setEstimatedPickupTime] = useState("00:00");
   const [estimatedDeliveryTime, setEstimatedDeliveryTime] = useState("00:00");
   const [price, setPrice] = useState("0.00");
+  const [myRoute, setRoute] = useState(null);
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -28,6 +34,7 @@ const RouteInfo = ({ directions, data }) => {
         `${deliveryTime.getHours()}:${deliveryTime.getMinutes()}`
       );
       setPrice(data.groundPlan.price.toFixed(2));
+      setRoute(directions[0]);
     } else if (carrierType === "UAV" && data.uavPlan) {
       const pickTime = new Date(data.uavPlan.estimatedPickTime);
       const deliveryTime = new Date(data.uavPlan.estimatedDeliveryTime);
@@ -36,8 +43,9 @@ const RouteInfo = ({ directions, data }) => {
         `${deliveryTime.getHours()}:${deliveryTime.getMinutes()}`
       );
       setPrice(data.uavPlan.price.toFixed(2));
+      setRoute(directions[1]);
     }
-  }, [carrierType, data]);
+  }, [carrierType, data, directions]);
 
   const navigate = useNavigate();
 
@@ -57,8 +65,8 @@ const RouteInfo = ({ directions, data }) => {
   };
 
   // Extract route information from the directions object if available
-  const routeInfo =
-    directions && directions.routes[0] && directions.routes[0].legs[0];
+  // const routeInfo =
+  //   directions && directions.routes[0] && directions.routes[0].legs[0];
 
   // New function to handle the "Book" button click
   const onBookClick = async (e) => {
@@ -126,7 +134,7 @@ const RouteInfo = ({ directions, data }) => {
           <form className="form">
             <div className="order-info-block">
               <div className="route-info-section">
-                <h3>Route Information</h3>
+                {/* <h3>Route Information</h3>
                 {routeInfo && (
                   <>
                     <p>
@@ -138,23 +146,32 @@ const RouteInfo = ({ directions, data }) => {
                       {routeInfo.duration.value} seconds)
                     </p>
                   </>
-                )}
+                )} */}
                 <div className="info-blocks">
                   <div className="info-block">
                     <div>Estimated_Pickup_Time:</div>
-                    <div className="number-display" style={{ border: "1px solid rgb(79, 233, 167)" }}>
+                    <div
+                      className="number-display"
+                      style={{ border: "1px solid rgb(79, 233, 167)" }}
+                    >
                       <span>{estimatedPickupTime}</span>
                     </div>
                   </div>
                   <div className="info-block">
                     <div>Estimated_Delivery_Time:</div>
-                    <div className="number-display" style={{ border: "1px solid rgb(79, 233, 167)" }}>
+                    <div
+                      className="number-display"
+                      style={{ border: "1px solid rgb(79, 233, 167)" }}
+                    >
                       <span>{estimatedDeliveryTime}</span>
                     </div>
                   </div>
                   <div className="info-block">
                     <div>Price:</div>
-                    <div className="number-display" style={{ border: "1px solid rgb(79, 233, 167)" }}>
+                    <div
+                      className="number-display"
+                      style={{ border: "1px solid rgb(79, 233, 167)" }}
+                    >
                       <span>${price}</span>
                     </div>
                   </div>
@@ -165,7 +182,7 @@ const RouteInfo = ({ directions, data }) => {
                 <select
                   className="carrier-type-dropdown"
                   value={carrierType}
-                  onChange={handleCarrierTypeChange} 
+                  onChange={handleCarrierTypeChange}
                   style={{ border: "1px solid rgb(79, 233, 167)" }}
                 >
                   <option value="Robot Car">Robot Car</option>
@@ -182,7 +199,7 @@ const RouteInfo = ({ directions, data }) => {
           </form>
         </div>
         <div className="map_wrapper">
-          <Map center={{ lat: 37.7749, lng: -122.4194 }} zoom={10} />
+          <Map center={{ lat: 37.7749, lng: -122.4194 }} route={myRoute} />
         </div>
       </div>
     </div>
