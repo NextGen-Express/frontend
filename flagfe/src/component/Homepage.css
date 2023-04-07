@@ -71,7 +71,7 @@
 }
 
 .form {
-  margin-top: 40px;
+  margin-top: 0px;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -95,20 +95,26 @@
 /*Label position */
 label[for="pickup-address"] {
   position: relative;
-  top: 30px;
-  left: -17px;
+  top: 15px;
+  left: -35px;
 }
 
 label[for="destination"] {
   position: relative;
-  top: 30px;
-  left: -17px;
+  top: 15px;
+  left: -60px;
 }
 
 label[for="weight"] {
   position: relative;
-  top: 30px;
-  left: -17px;
+  top: 15px;
+  left: -85px;
+}
+
+.form label {
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 
