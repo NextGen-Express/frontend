@@ -150,40 +150,28 @@ const RouteInfo = ({ directions, data }) => {
                 <div className="info-blocks">
                   <div className="info-block">
                     <div>Estimated_Pickup_Time:</div>
-<<<<<<< Updated upstream
-                    <div className="number-display" style={{ border: "1px solid rgb(79, 233, 167)" }}>
-=======
                     <div
                       className="number-display"
                       style={{ border: "1px solid rgb(79, 233, 167)" }}
                     >
->>>>>>> Stashed changes
                       <span>{estimatedPickupTime}</span>
                     </div>
                   </div>
                   <div className="info-block">
                     <div>Estimated_Delivery_Time:</div>
-<<<<<<< Updated upstream
-                    <div className="number-display" style={{ border: "1px solid rgb(79, 233, 167)" }}>
-=======
                     <div
                       className="number-display"
                       style={{ border: "1px solid rgb(79, 233, 167)" }}
                     >
->>>>>>> Stashed changes
                       <span>{estimatedDeliveryTime}</span>
                     </div>
                   </div>
                   <div className="info-block">
                     <div>Price:</div>
-<<<<<<< Updated upstream
-                    <div className="number-display" style={{ border: "1px solid rgb(79, 233, 167)" }}>
-=======
                     <div
                       className="number-display"
                       style={{ border: "1px solid rgb(79, 233, 167)" }}
                     >
->>>>>>> Stashed changes
                       <span>${price}</span>
                     </div>
                   </div>
@@ -194,11 +182,7 @@ const RouteInfo = ({ directions, data }) => {
                 <select
                   className="carrier-type-dropdown"
                   value={carrierType}
-<<<<<<< Updated upstream
-                  onChange={handleCarrierTypeChange} 
-=======
                   onChange={handleCarrierTypeChange}
->>>>>>> Stashed changes
                   style={{ border: "1px solid rgb(79, 233, 167)" }}
                 >
                   <option value="Robot Car">Robot Car</option>
