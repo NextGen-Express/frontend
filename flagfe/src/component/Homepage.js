@@ -146,7 +146,8 @@ function Homepage() {
       <div className="content">
         <div className="form_wrapper">
           <form className="form">
-            <select value={selectedCity} onChange={handleCityChange}>
+            <select value={selectedCity} onChange={handleCityChange} 
+            style={{ border: "1px solid rgb(79, 233, 167)" }}>
               <option value="San Francisco">San Francisco</option>
               <option value="Los Angeles">Los Angeles</option>
               <option value="New York">New York</option>

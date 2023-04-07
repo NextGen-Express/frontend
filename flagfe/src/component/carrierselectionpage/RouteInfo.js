@@ -130,20 +130,20 @@ const RouteInfo = ({ directions, data }) => {
                 )}
                 <div className="info-blocks">
                   <div className="info-block">
-                    <h4>Estimated_Pickup_Time:</h4>
-                    <div className="number-display">
+                    <div>Estimated_Pickup_Time:</div>
+                    <div className="number-display" style={{ border: "1px solid rgb(79, 233, 167)" }}>
                       <span>{estimatedPickupTime}</span>
                     </div>
                   </div>
                   <div className="info-block">
-                    <h4>Estimated_Delivery_Time:</h4>
-                    <div className="number-display">
+                    <div>Estimated_Delivery_Time:</div>
+                    <div className="number-display" style={{ border: "1px solid rgb(79, 233, 167)" }}>
                       <span>{estimatedDeliveryTime}</span>
                     </div>
                   </div>
                   <div className="info-block">
-                    <h4>Price:</h4>
-                    <div className="number-display">
+                    <div>Price:</div>
+                    <div className="number-display" style={{ border: "1px solid rgb(79, 233, 167)" }}>
                       <span>${price}</span>
                     </div>
                   </div>
@@ -154,7 +154,8 @@ const RouteInfo = ({ directions, data }) => {
                 <select
                   className="carrier-type-dropdown"
                   value={carrierType}
-                  onChange={handleCarrierTypeChange}
+                  onChange={handleCarrierTypeChange} 
+                  style={{ border: "1px solid rgb(79, 233, 167)" }}
                 >
                   <option value="Robot Car">Robot Car</option>
                   <option value="UAV">UAV</option>
