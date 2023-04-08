@@ -39,7 +39,7 @@ const Signup = () => {
     const phoneNumbers = /^[0-9]+$/;
     const phoneValid = phoneNumbers.test(phone_number) && phone_number.length === 10;
   
-    const passwordRegex = /^.{2,}$/;
+    const passwordRegex = /^.{5,}$/;
     const passwordValid = passwordRegex.test(password);
 
     const errors = {};
