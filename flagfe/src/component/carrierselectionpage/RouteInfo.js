@@ -10,13 +10,15 @@ const RouteInfo = ({ directions, data }) => {
   //console.log(directions);
   //console.log(directions[0]);
   console.log(directions);
+  const origin = data.groundPlan.origin;
+  const destination = data.groundPlan.destionation;
 
   const [carrierType, setCarrierType] = useState("Robot Car");
 
   const [estimatedPickupTime, setEstimatedPickupTime] = useState("00:00");
   const [estimatedDeliveryTime, setEstimatedDeliveryTime] = useState("00:00");
   const [price, setPrice] = useState("0.00");
-  const [myRoute, setRoute] = useState(null);
+  //const [myRoute, setRoute] = useState(null);
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
@@ -34,7 +36,7 @@ const RouteInfo = ({ directions, data }) => {
         `${deliveryTime.getHours()}:${deliveryTime.getMinutes()}`
       );
       setPrice(data.groundPlan.price.toFixed(2));
-      setRoute(directions[0]);
+      //setRoute(directions[0]);
     } else if (carrierType === "UAV" && data.uavPlan) {
       const pickTime = new Date(data.uavPlan.estimatedPickTime);
       const deliveryTime = new Date(data.uavPlan.estimatedDeliveryTime);
@@ -43,7 +45,7 @@ const RouteInfo = ({ directions, data }) => {
         `${deliveryTime.getHours()}:${deliveryTime.getMinutes()}`
       );
       setPrice(data.uavPlan.price.toFixed(2));
-      setRoute(directions[1]);
+      //setRoute(directions[1]);
     }
   }, [carrierType, data, directions]);
 
@@ -199,7 +201,13 @@ const RouteInfo = ({ directions, data }) => {
           </form>
         </div>
         <div className="map_wrapper">
-          <Map center={{ lat: 37.7749, lng: -122.4194 }} route={myRoute} />
+          <Map
+            center={{ lat: 37.7749, lng: -122.4194 }}
+            route={carrierType === "UAV" ? directions[1] : directions[0]}
+            carrierType={carrierType}
+            origin={origin}
+            destination={destination}
+          />
         </div>
       </div>
     </div>

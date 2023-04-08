@@ -1,11 +1,12 @@
 // For data loading of json -- TEST PURPOSE
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import RouteInfo from "./RouteInfo";
 import Map from "../Map";
 import { cityCoordinates, useMapSearch } from "../../constants.js";
 import getGroundDirection from "./GroundRoute";
+import getStraightLine from "./UAVRoute";
 
 const CarrierSelection = () => {
   const { state } = useLocation();
@@ -14,11 +15,14 @@ const CarrierSelection = () => {
   // get origin and destination, and calculate routes
   const origin = state.data.groundPlan.origin;
   const destionation = state.data.groundPlan.destionation;
+  // const groundRoute = useMemo(() => getGroundDirection(origin, destionation));
+  // const uavRoute = useMemo(() => getStraightLine(origin, destionation));
   const groundRoute = getGroundDirection(origin, destionation);
-  const uavRoute = getGroundDirection(origin, destionation);
-  //console.log(groundRoute);
+  const uavRoute = getStraightLine(origin, destionation);
+
+  // console.log(groundRoute);
   const directions = [groundRoute, uavRoute];
-  //console.log(directions);
+  console.log(directions);
 
   const [center, setCenter] = useState(cityCoordinates["San Francisco"]);
 
