@@ -10,7 +10,7 @@ import getStraightLine from "./UAVRoute";
 
 const CarrierSelection = () => {
   const { state } = useLocation();
-  //console.log(state);
+  console.log(state);
 
   // get origin and destination, and calculate routes
   const origin = state.data.groundPlan.origin;

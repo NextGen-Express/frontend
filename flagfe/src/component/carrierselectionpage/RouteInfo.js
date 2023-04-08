@@ -10,6 +10,7 @@ const RouteInfo = ({ directions, data }) => {
   //console.log(directions);
   //console.log(directions[0]);
   console.log(directions);
+  const startStation = data.groundPlan.startStation;
   const origin = data.groundPlan.origin;
   const destination = data.groundPlan.destionation;
 
@@ -79,14 +80,8 @@ const RouteInfo = ({ directions, data }) => {
     const payload = {
       estimated_pick_time: selectedPlan.estimatedPickTime,
       estimated_delivery_time: selectedPlan.estimatedDeliveryTime,
-      pickup_addr:
-        carrierType === "Robot Car"
-          ? selectedPlan.route.legs[0].startAddress
-          : selectedPlan.origin,
-      delivery_addr:
-        carrierType === "Robot Car"
-          ? selectedPlan.route.legs[0].endAddress
-          : selectedPlan.destionation,
+      pickup_addr: origin,
+      delivery_addr: destination,
       carrier_id: selectedPlan.carrierId,
       price: selectedPlan.price.toFixed(2),
     };
@@ -205,6 +200,7 @@ const RouteInfo = ({ directions, data }) => {
             center={{ lat: 37.7749, lng: -122.4194 }}
             route={carrierType === "UAV" ? directions[1] : directions[0]}
             carrierType={carrierType}
+            startStation={startStation}
             origin={origin}
             destination={destination}
           />

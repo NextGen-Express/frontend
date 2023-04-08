@@ -9,16 +9,19 @@ const containerStyle = {
 const markerLocations = [
   {
     id: 1,
+    label: "DC1",
     position: { lat: 37.73874747540093, lng: -122.4683741639298 },
     address: "236 W Portal Ave, San Francisco, CA 94127",
   },
   {
     id: 2,
+    label: "DC2",
     position: { lat: 37.787047187280024, lng: -122.45343392870515 },
     address: "3145 Geary Blvd, San Francisco, CA 94118",
   },
   {
     id: 3,
+    label: "DC3",
     position: { lat: 37.75872860740814, lng: -122.41489106937792 },
     address: "1198 S Van Ness Ave, San Francisco, CA 94110",
   },
@@ -36,6 +39,7 @@ function Map({ center, route, carrierType, origin, destination }) {
       position: location.position,
       map: mapInstance,
       title: location.address,
+      label: location.label,
     });
 
     marker.addListener("click", () => {
@@ -88,9 +92,11 @@ function Map({ center, route, carrierType, origin, destination }) {
       });
 
       if (!directionsRenderer) {
-        const newDirectionsRenderer = new window.google.maps.DirectionsRenderer({
-          suppressMarkers: true,
-        });
+        const newDirectionsRenderer = new window.google.maps.DirectionsRenderer(
+          {
+            suppressMarkers: true,
+          }
+        );
         newDirectionsRenderer.setMap(map);
         setDirectionsRenderer(newDirectionsRenderer);
       }
@@ -106,7 +112,7 @@ function Map({ center, route, carrierType, origin, destination }) {
         if (carrierType === "Robot Car") {
           if (directionsRenderer && route) {
             directionsRenderer.setDirections(route);
-            
+
             const startMarker = new window.google.maps.Marker({
               position: route.routes[0].legs[0].start_location,
               map: mapInstance,
