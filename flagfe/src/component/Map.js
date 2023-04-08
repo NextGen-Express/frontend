@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import getStraightLine from "./carrierselectionpage/UAVRoute";
 
 const containerStyle = {
   width: "1600px",
@@ -23,11 +24,12 @@ const markerLocations = [
   },
 ];
 
-function Map({ center, route }) {
+function Map({ center, route, carrierType, origin, destination }) {
   const mapRef = useRef(null);
   const [mapInstance, setMapInstance] = useState(null);
   const [infoWindow, setInfoWindow] = useState(null);
   const [directionsRenderer, setDirectionsRenderer] = useState(null);
+  const [line, setLine] = useState(null);
 
   const createMarker = (location) => {
     const marker = new window.google.maps.Marker({
@@ -45,6 +47,23 @@ function Map({ center, route }) {
       });
       newInfoWindow.open(mapInstance, marker);
       setInfoWindow(newInfoWindow);
+    });
+  };
+
+  const geocodeAddress = async (address) => {
+    const geocoder = new window.google.maps.Geocoder();
+    return new Promise((resolve, reject) => {
+      geocoder.geocode({ address }, (results, status) => {
+        if (status === "OK") {
+          resolve(results[0].geometry.location);
+        } else {
+          reject(
+            new Error(
+              "Geocode was not successful for the following reason: " + status
+            )
+          );
+        }
+      });
     });
   };
 
@@ -82,23 +101,77 @@ function Map({ center, route }) {
   }, [center, mapInstance]);
 
   useEffect(() => {
-    if (directionsRenderer && route) {
-      directionsRenderer.setDirections(route);
+    const drawLine = async () => {
+      if (mapInstance && origin && destination) {
+        if (carrierType === "Robot Car") {
+          if (directionsRenderer && route) {
+            directionsRenderer.setDirections(route);
+            
+            const startMarker = new window.google.maps.Marker({
+              position: route.routes[0].legs[0].start_location,
+              map: mapInstance,
+              label: "Start",
+            });
 
-      const startMarker = new window.google.maps.Marker({
-        position: route.routes[0].legs[0].start_location,
-        map: mapInstance,
-        label: "Start",
-      });
+            const endMarker = new window.google.maps.Marker({
+              position: route.routes[0].legs[0].end_location,
+              map: mapInstance,
+              label: "End",
+            });
+          }
 
-      const endMarker = new window.google.maps.Marker({
-        position: route.routes[0].legs[0].end_location,
-        map: mapInstance,
-        label: "End",
-      });
-    }
-  }, [directionsRenderer, route]);
+          if (line) {
+            line.setMap(null);
+            setLine(null);
+          }
+        } else {
+          if (directionsRenderer) {
+            directionsRenderer.setDirections({ routes: [] });
+          }
 
+          // if (line) {
+          //   line.setMap(null);
+          // }
+
+          try {
+            const originCoords = await geocodeAddress(origin);
+            const destinationCoords = await geocodeAddress(destination);
+
+            const straightLine = new window.google.maps.Polyline({
+              path: [originCoords, destinationCoords],
+              geodesic: true,
+              strokeColor: "#FF0000",
+              strokeOpacity: 1.0,
+              strokeWeight: 2,
+            });
+
+            straightLine.setMap(mapInstance);
+            setLine(straightLine);
+
+            // Calculate the midpoint of the straight line
+            const midPoint = new window.google.maps.LatLng(
+              (originCoords.lat() + destinationCoords.lat()) / 2,
+              (originCoords.lng() + destinationCoords.lng()) / 2
+            );
+
+            // Set the midpoint as the map center
+            mapInstance.setCenter(midPoint);
+          } catch (error) {
+            console.error("Error drawing line:", error);
+          }
+        }
+      }
+    };
+
+    drawLine();
+  }, [
+    mapInstance,
+    origin,
+    destination,
+    carrierType,
+    directionsRenderer,
+    route,
+  ]);
   return <div ref={mapRef} style={containerStyle}></div>;
 }
 
