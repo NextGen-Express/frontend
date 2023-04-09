@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import icon from "./img/mencon.png";
-// import "./App.css";
-// import React from "react";
 import Map from "./component/Map";
 import { handleSearch } from "./utils";
 import { cityCoordinates, useMapSearch } from "./constants.js";
@@ -16,17 +14,6 @@ import History from "./component/History";
 import CarrierSelection from "./component/carrierselectionpage/CarrierSelection";
 import Logout from "./component/Logout";
 
-// function PrivateRoute({ element, ...rest }) {
-//   const isLoggedIn = localStorage.getItem("isLoggedIn");
-//   const navigate = useNavigate();
-
-//   if (!isLoggedIn) {
-//     navigate("/Login");
-//     return null;
-//   }
-
-//   return <Route {...rest} element={element} />;
-// }
 
 function App() {
   return (
